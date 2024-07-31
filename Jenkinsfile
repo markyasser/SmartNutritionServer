@@ -43,11 +43,9 @@ pipeline {
             steps {
                 script {
                     // Run the application
-                    // Ensure that the application has execution permissions
-                    sh "chmod +x ${DEPLOY_DIR}/${APP_NAME}"
-                    
-                    // Execute the application
-                    sh "${DEPLOY_DIR}/${APP_NAME}"
+                    dir("${DEPLOY_DIR}") {
+                        sh './SmartNutritionServer'
+                    }
                 }
             }
         }

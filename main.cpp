@@ -1,7 +1,7 @@
 #include "User.hpp"
 #include "NutritionServer.hpp"
 
-int main(int argc, char *argv[])
+int main()
 {
     NutritionServer &server = NutritionServer::getInstance();
 

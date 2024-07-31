@@ -1,6 +1,40 @@
 #include "Statistics.hpp"
+#include <fstream>
+#include <numeric>
+#include <iomanip>
 
 void Statistics::analyze(const std::vector<User> &users)
 {
-    // Logic to analyze user data and generate statistics
+    calculateStatistics(users);
+}
+
+void Statistics::calculateStatistics(const std::vector<User> &users)
+{
+    if (users.empty())
+    {
+        averageWeight_ = 0.0;
+        averageHeight_ = 0.0;
+        return;
+    }
+    averageWeight_ = std::accumulate(users.begin(), users.end(), 0.0,
+                                     [](double sum, const User &user)
+                                     { return sum + user.getWeight(); }) /
+                     users.size();
+
+    averageHeight_ = std::accumulate(users.begin(), users.end(), 0.0,
+                                     [](double sum, const User &user)
+                                     { return sum + user.getHeight(); }) /
+                     users.size();
+}
+
+void Statistics::saveStatistics(const std::string &filePath) const
+{
+    std::ofstream outFile(filePath);
+    if (outFile.is_open())
+    {
+        outFile << std::fixed << std::setprecision(2);
+        outFile << "Average Weight: " << averageWeight_ << " kg" << std::endl;
+        outFile << "Average Height: " << averageHeight_ << " cm" << std::endl;
+        outFile.close();
+    }
 }

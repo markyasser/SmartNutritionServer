@@ -1,10 +1,14 @@
 #include "Logger.hpp"
-#include <iostream>
-#include <fstream>
+
+Logger::Logger(const std::string &logFilePath) : logFilePath_(logFilePath) {}
 
 void Logger::log(const std::string &info)
 {
-    std::ofstream logFile("data/logs/server_log.txt", std::ios_base::app);
+    logToFile(logFilePath_, info);
+}
+
+void Logger::logToFile(const std::string &filePath, const std::string &info)
+{
+    std::ofstream logFile(filePath, std::ios_base::app);
     logFile << info << std::endl;
-    logFile.close();
 }

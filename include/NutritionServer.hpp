@@ -7,7 +7,7 @@
 #include "Statistics.hpp"
 #include "Observer.hpp"
 
-class NutritionServer : public Observer
+class NutritionServer
 {
 public:
     static NutritionServer &getInstance();
@@ -17,7 +17,7 @@ public:
     void analyzeData();
 
     // Observer interface
-    void update(const std::string &data) override;
+    // void update(const std::string &data) override;
 
 private:
     NutritionServer();

@@ -1,4 +1,5 @@
 #include "NutritionServer.hpp"
+#include <sstream>
 
 NutritionServer &NutritionServer::getInstance()
 {
@@ -7,21 +8,25 @@ NutritionServer &NutritionServer::getInstance()
 }
 
 NutritionServer::NutritionServer()
+    : logger_("data/logs/server_log.txt")
 {
-    // Initialize food categories, logger, etc.
+    // Initialize food categories, etc.
 }
 
 void NutritionServer::receiveUserInfo(const User &user)
 {
     users_.push_back(user);
-    logInfo("Received info for user: " + user.getName());
+    std::ostringstream oss;
+    oss << "Received info for user: " << user.getName();
+    logInfo(oss.str());
 }
 
 void NutritionServer::generateDietPlan(const User &user)
 {
     DietPlan plan;
     plan.createPlan(user, foodCategories_);
-    // Send plan back to the patient software (stubbed)
+    // Save or send the plan (stubbed)
+    logInfo("Generated diet plan for user: " + user.getName());
 }
 
 void NutritionServer::logInfo(const std::string &info)
@@ -32,9 +37,5 @@ void NutritionServer::logInfo(const std::string &info)
 void NutritionServer::analyzeData()
 {
     statistics_.analyze(users_);
-}
-
-void NutritionServer::update(const std::string &data)
-{
-    logInfo("Update received: " + data);
+    statistics_.saveStatistics("data/logs/statistics.txt");
 }

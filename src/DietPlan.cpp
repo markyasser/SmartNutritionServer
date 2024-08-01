@@ -184,3 +184,47 @@ void DietPlan::display() const
         }
     }
 }
+
+std::vector<DayMeals> DietPlan::getWeeklyPlan() const
+{
+    return weeklyPlan;
+}
+
+nlohmann::json DietPlan::toJson()
+{
+    nlohmann::json j;
+    j["id"] = id;
+
+    // Create a JSON array for the weekly plan
+    j["weeklyPlan"] = nlohmann::json::array();
+    for (const auto &dayMeals : weeklyPlan)
+    {
+        nlohmann::json dayJson;
+
+        // Convert breakfast items to JSON
+        dayJson["breakfast"] = nlohmann::json::array();
+        for (const auto &item : dayMeals.breakfast)
+        {
+            dayJson["breakfast"].push_back(item.toJson());
+        }
+
+        // Convert lunch items to JSON
+        dayJson["lunch"] = nlohmann::json::array();
+        for (const auto &item : dayMeals.lunch)
+        {
+            dayJson["lunch"].push_back(item.toJson());
+        }
+
+        // Convert dinner items to JSON
+        dayJson["dinner"] = nlohmann::json::array();
+        for (const auto &item : dayMeals.dinner)
+        {
+            dayJson["dinner"].push_back(item.toJson());
+        }
+
+        // Add the day's plan to the weekly plan
+        j["weeklyPlan"].push_back(dayJson);
+    }
+
+    return j;
+}

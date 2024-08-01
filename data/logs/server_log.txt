@@ -1,69 +1,15 @@
-Received info for user: Alice
-Generated diet plan for user: Alice
-Received info for user: Bob
-Generated diet plan for user: Bob
-Received info for user: Alice
-Generated diet plan for user: Alice
-Received info for user: Bob
-Generated diet plan for user: Bob
-Received info for user: Alice
-Generated diet plan for user: Alice
-Received info for user: Bob
-Generated diet plan for user: Bob
-Received info for user: Alice
-Generated diet plan for user: Alice
-Received info for user: Bob
-Generated diet plan for user: Bob
-Received info for user: Alice
-Generated diet plan for user: Alice
-Received info for user: Bob
-Generated diet plan for user: Bob
-Received info for user: Alice
-Generated diet plan for user: Alice
-Received info for user: Bob
-Generated diet plan for user: Bob
-Received info for user: Alice
-Generated diet plan for user: Alice
-Received info for user: Bob
-Generated diet plan for user: Bob
-Received info for user: Alice
-Generated diet plan for user: Alice
-Received info for user: Alice
-Generated diet plan for user: Alice
-Received info for user: Alice
-Generated diet plan for user: Alice
-Received info for user: Alice
-Generated diet plan for user: Alice
-Received info for user: Alice
-Generated diet plan for user: Alice
-Received info for user: Alice
-Generated diet plan for user: Alice
-Received info for user: Alice
-Generated diet plan for user: Alice
-Received info for user: Alice
-Generated diet plan for user: Alice
-Received info for user: Alice
-Generated diet plan for user: Alice
-Received info for user: Alice
-Generated diet plan for user: Alice
-Received info for user: Alice
+Received info for user: Mark
 User info saved successfully.
-Generated diet plan for user: Alice
-Received info for user: Alice
+Generated diet plan for user: Mark
+Received info for user: Mark
 User info saved successfully.
-Generated diet plan for user: Alice
-Received info for user: Alice
+Generated diet plan for user: Mark
+Received info for user: Mark
 User info saved successfully.
-Generated diet plan for user: Alice
-Received info for user: Alice
+Generated diet plan for user: Mark
+Received info for user: Mark
 User info saved successfully.
-Generated diet plan for user: Alice
-Received info for user: Bob
+Generated diet plan for user: Mark
+Received info for user: Mark
 User info saved successfully.
-Generated diet plan for user: Bob
-Received info for user: Alice
-User info saved successfully.
-Generated diet plan for user: Alice
-Received info for user: Bob
-User info saved successfully.
-Generated diet plan for user: Bob
+Generated diet plan for user: Mark

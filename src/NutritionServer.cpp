@@ -24,13 +24,14 @@ void NutritionServer::receiveUserInfo(const User &user)
     saveUserInfo(user);
 }
 
-void NutritionServer::generateDietPlan(const User &user)
+nlohmann::json NutritionServer::generateDietPlan(const User &user)
 {
     DietPlan plan;
     plan.createPlan(user, foodItems_);
     // Save or send the plan (stubbed)
     logInfo("Generated diet plan for user: " + user.getName());
-    plan.display();
+    // plan.display();
+    return plan.toJson();
 }
 
 void NutritionServer::logInfo(const std::string &info)

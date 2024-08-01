@@ -19,6 +19,7 @@ public:
     std::string getMeal() const;
     std::string getType() const;
     static FoodItem fromJson(const std::string &name, const nlohmann::json &j);
+    nlohmann::json toJson() const;
 
 private:
     std::string name_;

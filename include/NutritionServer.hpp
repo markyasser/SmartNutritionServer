@@ -20,7 +20,7 @@ public:
     static NutritionServer &getInstance();
     void receiveUserInfo(const User &user);
     void saveUserInfo(const User &user);
-    void generateDietPlan(const User &user);
+    nlohmann::json generateDietPlan(const User &user);
     void logInfo(const std::string &info);
     void analyzeData();
     void populateFoodItems(); // Read from json

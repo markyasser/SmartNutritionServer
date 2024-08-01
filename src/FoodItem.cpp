@@ -16,6 +16,18 @@ FoodItem FoodItem::fromJson(const std::string &name, const nlohmann::json &j)
     return FoodItem(name, calories, carbs, protein, fat, meal, type, 1);
 }
 
+nlohmann::json FoodItem::toJson() const
+{
+    return {
+        {"name", name_},
+        {"calories", calories_},
+        {"carbs", carbs_},
+        {"protein", protein_},
+        {"fat", fat_},
+        {"meal", meal_},
+        {"type", type_}};
+}
+
 // Getter methods
 std::string FoodItem::getName() const { return name_; }
 int FoodItem::getCalories() const { return calories_; }

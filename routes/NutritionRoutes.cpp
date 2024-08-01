@@ -12,9 +12,9 @@ void NutritionRoutes::setupRoutes(crow::SimpleApp &app, NutritionServer &server)
 
             // Register the user and generate a diet plan
             server.receiveUserInfo(user);
-            server.generateDietPlan(user);
+            nlohmann::json res = server.generateDietPlan(user);
 
-            return crow::response{200, "User registered and diet plan generated"};
+            return crow::response{200, res.dump()};
         } catch (const nlohmann::json::exception& e) {
             return crow::response{400, "Invalid JSON data"};
         } });

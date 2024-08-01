@@ -18,6 +18,8 @@ class DietPlan
 public:
     DietPlan();
     void createPlan(const User &user, const std::vector<FoodItem> &foodItems);
+    std::vector<DayMeals> getWeeklyPlan() const;
+    nlohmann::json toJson();
     void display() const;
 
 private:

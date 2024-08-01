@@ -22,7 +22,9 @@ include_directories(${INCLUDE_DIR})
 include_directories(${INCLUDE_ROUTES})
 
 # Find Boost
+set(Boost_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/boost_1_85_0)
 find_package(Boost REQUIRED)
+include_directories(${Boost_INCLUDE_DIR})
 
 # Include main.cpp in the sources list
 file(GLOB SOURCES ${SRC_DIR}/*.cpp ${CMAKE_SOURCE_DIR}/main.cpp)

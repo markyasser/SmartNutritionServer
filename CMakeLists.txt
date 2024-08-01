@@ -11,6 +11,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(SRC_DIR ${CMAKE_SOURCE_DIR}/src)
 set(INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include)
 
+# Crow
+find_package(Crow)
+target_link_libraries(SmartNutritionServer PUBLIC Crow::Crow)
+
 # Include main.cpp in the sources list
 file(GLOB SOURCES ${SRC_DIR}/*.cpp ${CMAKE_SOURCE_DIR}/main.cpp)
 file(GLOB HEADERS ${INCLUDE_DIR}/*.hpp)

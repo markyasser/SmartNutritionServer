@@ -7,5 +7,5 @@
 class NutritionRoutes
 {
 public:
-    static void setupRoutes(Crow::SimpleApp &app, NutritionServer &server);
+    static void setupRoutes(crow::SimpleApp &app, NutritionServer &server);
 };

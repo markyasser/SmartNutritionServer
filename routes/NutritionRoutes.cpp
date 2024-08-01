@@ -1,6 +1,6 @@
 #include "NutritionRoutes.hpp"
 
-void NutritionRoutes::setupRoutes(Crow::SimpleApp &app, NutritionServer &server)
+void NutritionRoutes::setupRoutes(crow::SimpleApp &app, NutritionServer &server)
 {
     // Endpoint to register a user and generate a diet plan
     app.route_dynamic("/register-user")

@@ -56,6 +56,22 @@
     "sstream": "cpp",
     "algorithm": "cpp",
     "optional": "cpp",
-    "random": "cpp"
+    "random": "cpp",
+    "any": "cpp",
+    "array": "cpp",
+    "chrono": "cpp",
+    "codecvt": "cpp",
+    "filesystem": "cpp",
+    "forward_list": "cpp",
+    "functional": "cpp",
+    "list": "cpp",
+    "map": "cpp",
+    "ranges": "cpp",
+    "ratio": "cpp",
+    "span": "cpp",
+    "unordered_map": "cpp",
+    "valarray": "cpp",
+    "xhash": "cpp",
+    "xtree": "cpp"
   }
 }

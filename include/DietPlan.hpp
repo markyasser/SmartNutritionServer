@@ -5,19 +5,31 @@
 #include <string>
 #include <random>
 
+// Structure to hold meals for a day
+struct DayMeals
+{
+    std::vector<FoodItem> breakfast;
+    std::vector<FoodItem> lunch;
+    std::vector<FoodItem> dinner;
+};
+
 class DietPlan
 {
 public:
     DietPlan();
-    void createPlan(const User &user, const std::vector<FoodItem> &categories);
+    void createPlan(const User &user, const std::vector<FoodItem> &foodItems);
     void display() const;
 
 private:
     int id;
-    std::vector<std::string> breakfast_;
-    std::vector<std::string> lunch_;
-    std::vector<std::string> dinner_;
+    std::vector<DayMeals> weeklyPlan;
 
     // Utility functions
-    std::vector<std::string> getRandomItems(const std::vector<std::string> &items, size_t count);
+    double calculateNeededCarbs(const User &user);
+    double calculateNeededProtein(const User &user);
+    double calculateNeededSweets(const User &user);
+    double calculateNeededVeggies(const User &user);
+    double calculateDailyCalories(const User &user);
+
+    std::vector<FoodItem> DietPlan::getRandomItems(const std::vector<FoodItem> &items, size_t count);
 };

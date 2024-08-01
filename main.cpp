@@ -10,9 +10,9 @@ int main()
     server.receiveUserInfo(user1);
     server.generateDietPlan(user1);
 
-    User user2("Bob", 30, 75.0, 180.0, "male", 130, 85, true);
-    server.receiveUserInfo(user2);
-    server.generateDietPlan(user2);
+    // User user2("Bob", 30, 75.0, 180.0, "male", 130, 85, true);
+    // server.receiveUserInfo(user2);
+    // server.generateDietPlan(user2);
 
     // Analyze data
     server.analyzeData();

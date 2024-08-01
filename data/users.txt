@@ -14,3 +14,15 @@ Name: Bob
 Age: 30, Gender: male
 Weight:75, Height: 180
 
+Name: Alice
+Age: 25, Gender: Female
+Weight:65, Height: 165
+
+Name: Bob
+Age: 30, Gender: male
+Weight:75, Height: 180
+
+Name: Alice
+Age: 25, Gender: Female
+Weight:65, Height: 165
+

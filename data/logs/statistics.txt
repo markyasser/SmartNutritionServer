@@ -1,2 +1,2 @@
-Average Weight: 70.00 kg
-Average Height: 172.50 cm
+Average Weight: 65.00 kg
+Average Height: 165.00 cm

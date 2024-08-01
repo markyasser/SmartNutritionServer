@@ -11,6 +11,15 @@ pipeline {
         stage ('Install Crow'){
             steps {
                 sh 'git clone https://github.com/CrowCpp/Crow.git'
+
+                dir('Crow'){
+                    sh 'mkdir build'
+                    dir('build'){
+                        sh 'cmake ..'
+                        sh 'make -j$(nproc)'
+                        sh 'sudo make install'
+                    }
+                }
             }
         }
         stage('Build') {

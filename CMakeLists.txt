@@ -7,11 +7,6 @@ project(SmartNutritionServer)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# Crow
-set(INCLUDE_LIBS ${CMAKE_SOURCE_DIR}/libs/boost_1_85_0 ${CMAKE_SOURCE_DIR}/libs/crow/include)
-include_directories(${INCLUDE_LIBS})
-
-
 # Define source and header files
 set(SRC_DIR ${CMAKE_SOURCE_DIR}/src)
 set(INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include)

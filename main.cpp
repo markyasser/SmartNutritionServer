@@ -5,6 +5,7 @@ int main()
 {
     // Create Crow application instance
     crow::SimpleApp app;
+    int port = 3000;
 
     // Create an instance of NutritionServer
     NutritionServer &server = NutritionServer::getInstance();
@@ -13,7 +14,7 @@ int main()
     NutritionRoutes::setupRoutes(app, server);
 
     // Start the server on port 8080 with multithreading enabled
-    app.port(8080).multithreaded().run();
+    app.port(port).multithreaded().run();
 
     return 0;
 }

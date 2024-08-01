@@ -5,7 +5,6 @@
 #include "DietPlan.hpp"
 #include "Logger.hpp"
 #include "Statistics.hpp"
-#include "Observer.hpp"
 
 class NutritionServer
 {

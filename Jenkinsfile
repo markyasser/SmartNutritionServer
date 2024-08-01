@@ -20,6 +20,7 @@ pipeline {
                 // }
 
                 dir('Crow'){
+                    sh 'rm -rf build'
                     sh 'mkdir build'
                     dir('build'){
                         sh 'cmake ..'

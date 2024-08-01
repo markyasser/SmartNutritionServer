@@ -22,7 +22,7 @@ public:
     void saveUserInfo(const User &user);
     nlohmann::json generateDietPlan(const User &user);
     void logInfo(const std::string &info);
-    void analyzeData();
+    nlohmann::json analyzeData();
     void populateFoodItems(); // Read from json
 
 private:

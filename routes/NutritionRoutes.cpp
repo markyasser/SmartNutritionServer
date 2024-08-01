@@ -23,8 +23,9 @@ void NutritionRoutes::setupRoutes(crow::SimpleApp &app, NutritionServer &server)
     app.route_dynamic("/analyze-data")
         .methods("GET"_method)([&server]
                                {
+            
         // Analyze user data and save statistics
-        server.analyzeData();
+        nlohmann::json res = server.analyzeData();
 
-        return crow::response{200, "Data analyzed and statistics saved"}; });
+        return crow::response{200, res.dump()}; });
 }

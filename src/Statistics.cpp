@@ -46,3 +46,11 @@ void Statistics::display() const
     std::cout << "Average Weight: " << averageWeight_ << " kg" << std::endl;
     std::cout << "Average Height: " << averageHeight_ << " cm" << std::endl;
 }
+
+nlohmann::json Statistics::toJson() const
+{
+    nlohmann::json j;
+    j["averageWeight"] = averageWeight_;
+    j["averageHeight"] = averageHeight_;
+    return j;
+}

@@ -81,7 +81,7 @@ void NutritionServer::populateFoodItems()
     std::cout << "Food items successfully populated from JSON file." << std::endl;
 }
 
-void NutritionServer::analyzeData()
+nlohmann::json NutritionServer::analyzeData()
 {
     // Load users
     std::vector<User> users;
@@ -89,7 +89,7 @@ void NutritionServer::analyzeData()
 
     statistics_.analyze(users);
     statistics_.saveStatistics("data/logs/statistics.txt");
-    statistics_.display();
+    return statistics_.toJson();
 }
 
 void NutritionServer::saveUserInfo(const User &user)

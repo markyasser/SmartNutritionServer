@@ -45,7 +45,7 @@ pipeline {
                     // Run the application
                     dir("${DEPLOY_DIR}") {
                         // Terminate any existing instances of the application
-                        // sh 'pkill SmartNutritionServer || true'
+                        sh 'pkill SmartNutritionServer || true'
 
                         // Start the application in the background
                         sh './SmartNutritionServer &'

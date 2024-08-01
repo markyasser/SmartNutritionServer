@@ -2,3 +2,7 @@ Received info for user: Alice
 Generated diet plan for user: Alice
 Received info for user: Bob
 Generated diet plan for user: Bob
+Received info for user: Alice
+Generated diet plan for user: Alice
+Received info for user: Bob
+Generated diet plan for user: Bob

@@ -5,9 +5,10 @@
 class FoodCategory
 {
 public:
-    FoodCategory(const std::string &name);
+    FoodCategory(const std::string &name, const std::vector<std::string> &foodItems);
     void addFoodItem(const std::string &item);
-    std::vector<std::string> getFoodItems() const;
+    std::vector<std::string> getItems() const;
+    std::string getName() const;
 
 private:
     std::string name_;

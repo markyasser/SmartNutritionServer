@@ -2,6 +2,7 @@
 #include <fstream>
 #include <numeric>
 #include <iomanip>
+#include <iostream>
 
 void Statistics::analyze(const std::vector<User> &users)
 {
@@ -37,4 +38,11 @@ void Statistics::saveStatistics(const std::string &filePath) const
         outFile << "Average Height: " << averageHeight_ << " cm" << std::endl;
         outFile.close();
     }
+}
+
+void Statistics::display() const
+{
+    std::cout << std::fixed << std::setprecision(2);
+    std::cout << "Average Weight: " << averageWeight_ << " kg" << std::endl;
+    std::cout << "Average Height: " << averageHeight_ << " cm" << std::endl;
 }

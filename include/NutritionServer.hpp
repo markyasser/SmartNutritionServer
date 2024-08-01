@@ -15,6 +15,7 @@ public:
     void generateDietPlan(const User &user);
     void logInfo(const std::string &info);
     void analyzeData();
+    void populateFoodCategories();
 
     // Observer interface
     // void update(const std::string &data) override;

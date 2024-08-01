@@ -4,6 +4,7 @@
 #include <vector>
 #include <map>
 #include <fstream>
+#include <json.hpp>
 
 class FoodItem
 {
@@ -17,6 +18,7 @@ public:
     int getFat() const;
     std::string getMeal() const;
     std::string getType() const;
+    static FoodItem fromJson(const std::string &name, const nlohmann::json &j);
 
 private:
     std::string name_;

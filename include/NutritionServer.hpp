@@ -1,10 +1,11 @@
 #pragma once
+#include "JsonManager.hpp"
+#include "Statistics.hpp"
 #include <vector>
 #include "User.hpp"
 #include "FoodItem.hpp"
 #include "DietPlan.hpp"
 #include "Logger.hpp"
-#include "Statistics.hpp"
 #include <json.hpp>
 #include <sstream>
 #include <iostream>
@@ -31,4 +32,7 @@ private:
     Logger logger_;
     Statistics statistics_;
     std::string usersFilePath_;
+
+    // Utility functions
+    std::vector<User> loadUsers();
 };

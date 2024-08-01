@@ -12,7 +12,7 @@ NutritionServer::NutritionServer()
     // Initialize food Items
     populateFoodItems();
 
-    usersFilePath_ = "data/users.txt";
+    usersFilePath_ = "users.json";
 }
 
 void NutritionServer::receiveUserInfo(const User &user)
@@ -69,17 +69,7 @@ void NutritionServer::populateFoodItems()
         auto foodJson = item.value();
         try
         {
-            std::string name = item.key();
-            int calories = foodJson.at("calories").get<int>();
-            int carbs = foodJson.at("carbs").get<int>();
-            int protein = foodJson.at("protein").get<int>();
-            int fat = foodJson.at("fat").get<int>();
-            std::string meal = foodJson.at("meal").get<std::string>();
-            std::string type = foodJson.at("type").get<std::string>();
-
-            // Create a FoodItem object and add it to the vector
-            FoodItem foodItem(name, calories, carbs, protein, fat, meal, type, 1);
-            foodItems_.push_back(foodItem);
+            foodItems_.push_back(FoodItem::fromJson(item.key(), foodJson));
         }
         catch (const std::exception &e)
         {
@@ -92,20 +82,32 @@ void NutritionServer::populateFoodItems()
 
 void NutritionServer::analyzeData()
 {
-    statistics_.analyze(users_);
+    // Load users
+    std::vector<User> users;
+    bool success = JsonManager<User>::readFromFile(usersFilePath_, users);
+
+    statistics_.analyze(users);
     statistics_.saveStatistics("data/logs/statistics.txt");
     statistics_.display();
 }
 
 void NutritionServer::saveUserInfo(const User &user)
 {
-    std::ofstream outFile(usersFilePath_, std::ios::app);
-    if (outFile.is_open())
+    // Load existing users
+    std::vector<User> users;
+    bool loadsuccess = JsonManager<User>::readFromFile(usersFilePath_, users);
+
+    // Add the new user
+    users.push_back(user);
+
+    // Write the updated user list to file
+    bool writesuccess = JsonManager<User>::writeToFile(usersFilePath_, users);
+    if (writesuccess)
     {
-        outFile << "Name: " << user.getName() << std::endl
-                << "Age: " << user.getAge() << ", Gender: " << user.getGender() << std::endl
-                << "Weight:" << user.getWeight() << ", Height: " << user.getHeight() << std::endl
-                << std::endl;
-        outFile.close();
+        logInfo("User info saved successfully.");
+    }
+    else
+    {
+        logInfo("Failed to save user info.");
     }
 }

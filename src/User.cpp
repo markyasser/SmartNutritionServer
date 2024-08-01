@@ -51,3 +51,28 @@ bool User::getIsDiabetic() const
 {
     return isDiabetic_;
 }
+
+void User::toJson(nlohmann::json &j) const
+{
+    j = nlohmann::json{
+        {"name", name_},
+        {"age", age_},
+        {"gender", gender_},
+        {"weight", weight_},
+        {"height", height_},
+        {"is_diabetic", isDiabetic_},
+        {"blood_pressure_upper", bloodPressureUpper_},
+        {"blood_pressure_lower", bloodPressureLower_}};
+}
+
+User User::fromJson(const nlohmann::json &j)
+{
+    return User(j.at("name").get<std::string>(),
+                j.at("age").get<int>(),
+                j.at("weight").get<double>(),
+                j.at("height").get<double>(),
+                j.at("gender").get<std::string>(),
+                j.at("blood_pressure_upper").get<int>(),
+                j.at("blood_pressure_lower").get<int>(),
+                j.at("is_diabetic").get<bool>());
+}

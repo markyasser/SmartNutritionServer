@@ -1,6 +1,5 @@
 {
     "bread" : {
-        "name" : "bread",
         "calories" : 100,
         "carbs" : 20,
         "protein" : 5,
@@ -9,6 +8,7 @@
         "type" : "carbs"
     },
     "milk" : {
+        
         "calories" : 50,
         "carbs" : 10,
         "protein" : 5,

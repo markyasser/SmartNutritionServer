@@ -52,15 +52,48 @@ void DietPlan::createPlan(const User &user, const std::vector<FoodItem> &foodIte
         }
     }
 
-    // Example: Assign random items for each meal type to each day
+    // Distribute nutritional needs
+    double breakfastRatio = 0.2; // 20% for breakfast
+    double lunchRatio = 0.3;     // 30% for lunch
+    double dinnerRatio = 0.5;    // 50% for dinner
+
     for (auto &dayMeals : weeklyPlan)
     {
-        // Assign random breakfast items
-        dayMeals.breakfast = getRandomItems(breakfastItems, 2); // Example: 2 items for breakfast
-        // Assign random lunch items
-        dayMeals.lunch = getRandomItems(lunchItems, 2); // Example: 2 items for lunch
-        // Assign random dinner items
-        dayMeals.dinner = getRandomItems(dinnerItems, 2); // Example: 2 items for dinner
+        // Assign breakfast items considering nutritional needs
+        assignMeals(dayMeals.breakfast, breakfastItems, neededCarbs * breakfastRatio, neededProtein * breakfastRatio);
+
+        // Assign lunch items considering nutritional needs
+        assignMeals(dayMeals.lunch, lunchItems, neededCarbs * lunchRatio, neededProtein * lunchRatio);
+
+        // Assign dinner items considering nutritional needs
+        assignMeals(dayMeals.dinner, dinnerItems, neededCarbs * dinnerRatio, neededProtein * dinnerRatio);
+    }
+}
+void DietPlan::assignMeals(std::vector<FoodItem> &meal, const std::vector<FoodItem> &availableItems, double neededCarbs, double neededProtein)
+{
+    double totalCarbs = 0;
+    double totalProtein = 0;
+
+    // Use a random number generator for variety
+    std::mt19937 rng(std::random_device{}());
+    std::vector<FoodItem> candidates = availableItems;
+
+    while (totalCarbs < neededCarbs && totalProtein < neededProtein && !candidates.empty())
+    {
+        std::uniform_int_distribution<std::size_t> dist(0, candidates.size() - 1);
+        std::size_t index = dist(rng);
+        FoodItem selected = candidates[index];
+
+        // Check if adding this item exceeds the nutritional needs
+        if (totalCarbs + selected.getCarbs() <= neededCarbs && totalProtein + selected.getProtein() <= neededProtein)
+        {
+            meal.push_back(selected);
+            totalCarbs += selected.getCarbs();
+            totalProtein += selected.getProtein();
+        }
+
+        // Remove the selected item from the pool of candidates
+        candidates.erase(candidates.begin() + index);
     }
 }
 

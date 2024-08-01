@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <json.hpp>
 
 class User
 {
@@ -14,6 +15,8 @@ public:
     int getBloodPressureUpper() const;
     int getBloodPressureLower() const;
     bool getIsDiabetic() const;
+    void toJson(nlohmann::json &j) const;
+    static User fromJson(const nlohmann::json &j);
 
 private:
     // Personal data

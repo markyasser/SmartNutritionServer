@@ -19,15 +19,15 @@ pipeline {
                     // sh 'sudo ./b2 install'
                 // }
 
-                dir('Crow'){
-                    sh 'rm -rf build'
-                    sh 'mkdir build'
-                    dir('build'){
-                        sh 'cmake ..'
-                        sh 'make -j$(nproc)'
-                        sh 'sudo make install'
-                    }
-                }
+                // dir('Crow'){
+                //     sh 'rm -rf build'
+                //     sh 'mkdir build'
+                //     dir('build'){
+                //         sh 'cmake ..'
+                //         sh 'make -j$(nproc)'
+                //         sh 'sudo make install'
+                //     }
+                // }
             }
         }
         stage('Build') {

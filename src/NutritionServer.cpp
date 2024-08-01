@@ -12,6 +12,8 @@ NutritionServer::NutritionServer()
 {
     // Initialize food categories
     populateFoodCategories();
+
+    usersFilePath_ = "data/users.txt";
 }
 
 void NutritionServer::receiveUserInfo(const User &user)
@@ -20,6 +22,7 @@ void NutritionServer::receiveUserInfo(const User &user)
     std::ostringstream oss;
     oss << "Received info for user: " << user.getName();
     logInfo(oss.str());
+    saveUserInfo(user);
 }
 
 void NutritionServer::generateDietPlan(const User &user)
@@ -50,4 +53,17 @@ void NutritionServer::analyzeData()
     statistics_.analyze(users_);
     statistics_.saveStatistics("data/logs/statistics.txt");
     statistics_.display();
+}
+
+void NutritionServer::saveUserInfo(const User &user)
+{
+    std::ofstream outFile(usersFilePath_, std::ios::app);
+    if (outFile.is_open())
+    {
+        outFile << "Name: " << user.getName() << std::endl
+                << "Age: " << user.getAge() << ", Gender: " << user.getGender() << std::endl
+                << "Weight:" << user.getWeight() << ", Height: " << user.getHeight() << std::endl
+                << std::endl;
+        outFile.close();
+    }
 }

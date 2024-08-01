@@ -12,13 +12,11 @@ class NutritionServer
 public:
     static NutritionServer &getInstance();
     void receiveUserInfo(const User &user);
+    void saveUserInfo(const User &user);
     void generateDietPlan(const User &user);
     void logInfo(const std::string &info);
     void analyzeData();
     void populateFoodCategories();
-
-    // Observer interface
-    // void update(const std::string &data) override;
 
 private:
     NutritionServer();
@@ -26,4 +24,5 @@ private:
     std::vector<FoodCategory> foodCategories_;
     Logger logger_;
     Statistics statistics_;
+    std::string usersFilePath_;
 };

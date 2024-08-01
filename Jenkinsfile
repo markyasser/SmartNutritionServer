@@ -44,7 +44,7 @@ pipeline {
                 script {
                     // Run the application
                     dir("${DEPLOY_DIR}") {
-                        sh './SmartNutritionServer'
+                        sh './SmartNutritionServer &'
                     }
                 }
             }

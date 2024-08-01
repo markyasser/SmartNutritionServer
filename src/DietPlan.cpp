@@ -3,7 +3,11 @@
 #include <random>
 #include <iostream>
 
-DietPlan::DietPlan() : id(0), weeklyPlan(7) {}
+DietPlan::DietPlan() : weeklyPlan(7)
+{
+    id = 0; // must be incremented by the server
+    feedback = 0;
+}
 
 void DietPlan::createPlan(const User &user, const std::vector<FoodItem> &foodItems)
 {
@@ -185,11 +189,6 @@ void DietPlan::display() const
     }
 }
 
-std::vector<DayMeals> DietPlan::getWeeklyPlan() const
-{
-    return weeklyPlan;
-}
-
 nlohmann::json DietPlan::toJson()
 {
     nlohmann::json j;
@@ -227,4 +226,19 @@ nlohmann::json DietPlan::toJson()
     }
 
     return j;
+}
+
+std::vector<DayMeals> DietPlan::getWeeklyPlan() const
+{
+    return weeklyPlan;
+}
+
+void DietPlan::setFeedback(int feedback)
+{
+    this->feedback = feedback;
+}
+
+int DietPlan::getFeedback() const
+{
+    return feedback;
 }

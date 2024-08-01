@@ -11,6 +11,13 @@ pipeline {
         stage ('Install Crow'){
             steps {
                 // sh 'git clone https://github.com/CrowCpp/Crow.git'
+                sh 'wget https://archives.boost.io/release/1.81.0/source/boost_1_81_0.tar.gz'
+                sh 'tar -xvfz boost_1_86_0_b1.tar.gz'
+                // dir('boost_1_86_0_b1'){
+                    // sh './bootstrap.sh'
+                    // sh './b2'
+                    // sh 'sudo ./b2 install'
+                // }
 
                 dir('Crow'){
                     sh 'mkdir build'

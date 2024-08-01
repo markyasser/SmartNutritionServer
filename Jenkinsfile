@@ -9,7 +9,9 @@ pipeline {
 
     stages {
         stage ('Install Crow'){
-            sh 'git clone https://github.com/CrowCpp/Crow.git'
+            steps {
+                sh 'git clone https://github.com/CrowCpp/Crow.git'
+            }
         }
         stage('Build') {
             steps {

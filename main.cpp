@@ -1,21 +1,19 @@
-#include "User.hpp"
-#include "NutritionServer.hpp"
+#include <crow.h>
+#include "NutritionRoutes.hpp"
 
 int main()
 {
+    // Create Crow application instance
+    crow::SimpleApp app;
+
+    // Create an instance of NutritionServer
     NutritionServer &server = NutritionServer::getInstance();
 
-    // Example: Add users and create plans
-    User user1("Alice", 25, 65.0, 165.0, "Female", 120, 80, false);
-    server.receiveUserInfo(user1);
-    server.generateDietPlan(user1);
+    // Set up routes using the NutritionRoutes class
+    NutritionRoutes::setupRoutes(app, server);
 
-    User user2("Bob", 30, 75.0, 180.0, "male", 130, 85, true);
-    server.receiveUserInfo(user2);
-    server.generateDietPlan(user2);
-
-    // Analyze data
-    server.analyzeData();
+    // Start the server on port 8080 with multithreading enabled
+    app.port(8080).multithreaded().run();
 
     return 0;
 }

@@ -22,7 +22,7 @@ include_directories(${INCLUDE_DIR})
 include_directories(${INCLUDE_ROUTES})
 
 # Find Boost
-set(Boost_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/boost_1_85_0)
+set(Boost_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/boost_1_81_0)
 find_package(Boost REQUIRED)
 include_directories(${Boost_INCLUDE_DIR})
 

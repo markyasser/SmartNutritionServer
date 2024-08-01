@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include "User.hpp"
-#include "FoodCategory.hpp"
+#include "FoodItem.hpp"
 #include "DietPlan.hpp"
 #include "Logger.hpp"
 #include "Statistics.hpp"
@@ -20,7 +20,7 @@ public:
 private:
     NutritionServer();
     std::vector<User> users_;
-    std::vector<FoodCategory> foodCategories_;
+    std::vector<FoodItem> foodCategories_;
     Logger logger_;
     Statistics statistics_;
     std::string usersFilePath_;

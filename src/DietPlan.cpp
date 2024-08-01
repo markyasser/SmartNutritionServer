@@ -3,43 +3,33 @@
 #include <random>
 #include <iostream>
 
-void DietPlan::createPlan(const User &user, const std::vector<FoodCategory> &categories)
+DietPlan::DietPlan()
 {
-    plan_.clear();
+    id = 0;
+}
 
-    // Define the number of items to select from each category
-    size_t carbsCount = 2;
-    size_t proteinCount = 2;
-    size_t sweetsCount = 1;
-    size_t veggiesCount = 2;
+void DietPlan::createPlan(const User &user, const std::vector<FoodItem> &categories)
+{
+    // Get user's needed carbs, protein, sweets, veggies from his weight, height, age, IsDiabetic, blood pressure
+    double weight = user.getWeight();
+    double height = user.getHeight();
+    int age = user.getAge();
+    bool isDiabetic = user.getIsDiabetic();
+    int bloodPressureUpper = user.getBloodPressureUpper();
+    int bloodPressureLower = user.getBloodPressureLower();
 
-    // Random number generator
-    std::random_device rd;
-    std::mt19937 gen(rd());
+    // Calculate needed calories
 
-    for (const auto &category : categories)
-    {
-        if (category.getName() == "Carbs")
-        {
-            auto items = getRandomItems(category.getItems(), carbsCount);
-            plan_.insert(plan_.end(), items.begin(), items.end());
-        }
-        else if (category.getName() == "Protein")
-        {
-            auto items = getRandomItems(category.getItems(), proteinCount);
-            plan_.insert(plan_.end(), items.begin(), items.end());
-        }
-        else if (category.getName() == "Sweets")
-        {
-            auto items = getRandomItems(category.getItems(), sweetsCount);
-            plan_.insert(plan_.end(), items.begin(), items.end());
-        }
-        else if (category.getName() == "Veggies")
-        {
-            auto items = getRandomItems(category.getItems(), veggiesCount);
-            plan_.insert(plan_.end(), items.begin(), items.end());
-        }
-    }
+    // Calculate needed carbs
+
+    // Calculate needed protein
+
+    // Calculate needed sweets
+
+    // Calculate needed veggies
+
+    // Create a one-week diet plan for the user
+    size_t days = 7;
 }
 
 std::vector<std::string> DietPlan::getRandomItems(const std::vector<std::string> &items, size_t count)
@@ -61,9 +51,4 @@ std::vector<std::string> DietPlan::getRandomItems(const std::vector<std::string>
 
 void DietPlan::display() const
 {
-    std::cout << "Diet Plan:" << std::endl;
-    for (const auto &item : plan_)
-    {
-        std::cout << item << std::endl;
-    }
 }

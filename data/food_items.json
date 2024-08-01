@@ -1,0 +1,147 @@
+{
+    "bread" : {
+        "name" : "bread",
+        "calories" : 100,
+        "carbs" : 20,
+        "protein" : 5,
+        "fat" : 2,
+        "meal" : "breakfast",
+        "type" : "carbs"
+    },
+    "milk" : {
+        "calories" : 50,
+        "carbs" : 10,
+        "protein" : 5,
+        "fat" : 2,
+        "meal" : "breakfast",
+        "type" : "protein"
+    },
+    "egg" : {
+        "calories" : 70,
+        "carbs" : 5,
+        "protein" : 10,
+        "fat" : 5,
+        "meal" : "breakfast",
+        "type" : "protein"
+    },
+    "apple" : {
+        "calories" : 50,
+        "carbs" : 10,
+        "protein" : 1,
+        "fat" : 0,
+        "meal" : "breakfast",
+        "type" : "carbs"
+    },
+    "banana" : {
+        "calories" : 100,
+        "carbs" : 20,
+        "protein" : 1,
+        "fat" : 0,
+        "meal" : "breakfast",
+        "type" : "carbs"
+    },
+    "orange" : {
+        "calories" : 50,
+        "carbs" : 10,
+        "protein" : 1,
+        "fat" : 0,
+        "meal" : "breakfast",
+        "type" : "carbs"
+    },
+    "chicken" : {
+        "calories" : 200,
+        "carbs" : 0,
+        "protein" : 40,
+        "fat" : 10,
+        "meal" : "lunch",
+        "type" : "protein"
+    },
+    "rice" : {
+        "calories" : 200,
+        "carbs" : 40,
+        "protein" : 5,
+        "fat" : 1,
+        "meal" : "lunch",
+        "type" : "carbs"
+    },
+    "salad" : {
+        "calories" : 50,
+        "carbs" : 10,
+        "protein" : 1,
+        "fat" : 0,
+        "meal" : "lunch",
+        "type" : "carbs"
+    },
+    "fish" : {
+        "calories" : 200,
+        "carbs" : 0,
+        "protein" : 40,
+        "fat" : 10,
+        "meal" : "lunch",
+        "type" : "protein"
+    },
+    "pasta" : {
+        "calories" : 200,
+        "carbs" : 40,
+        "protein" : 5,
+        "fat" : 1,
+        "meal" : "lunch",
+        "type" : "carbs"
+    },
+    "pizza" : {
+        "calories" : 200,
+        "carbs" : 40,
+        "protein" : 5,
+        "fat" : 1,
+        "meal" : "dinner",
+        "type" : "carbs"
+    },
+    "spinach" : {
+        "calories" : 50,
+        "carbs" : 10,
+        "protein" : 1,
+        "fat" : 0,
+        "meal" : "lunch",
+        "type" : "veggies"
+    },
+    "broccoli" : {
+        "calories" : 50,
+        "carbs" : 10,
+        "protein" : 1,
+        "fat" : 0,
+        "meal" : "dinner",
+        "type" : "veggies"
+    },
+    "carrot" : {
+        "calories" : 50,
+        "carbs" : 10,
+        "protein" : 1,
+        "fat" : 0,
+        "meal" : "breakfast",
+        "type" : "veggies"
+    },
+    "potato" : {
+        "calories" : 50,
+        "carbs" : 10,
+        "protein" : 1,
+        "fat" : 0,
+        "meal" : "dinner",
+        "type" : "veggies"
+    },
+    "chocolate" :{
+        "calories" : 100,
+        "carbs" : 20,
+        "protein" : 5,
+        "fat" : 2,
+        "meal" : "dinner",
+        "type" : "sweets"
+    },
+    "ice_cream" : {
+        "calories" : 100,
+        "carbs" : 20,
+        "protein" : 5,
+        "fat" : 2,
+        "meal" : "dinner",
+        "type" : "sweets"
+    }
+}

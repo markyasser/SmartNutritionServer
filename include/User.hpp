@@ -27,4 +27,7 @@ private:
     int bloodPressureUpper_;
     int bloodPressureLower_;
     bool isDiabetic_;
+
+    // Diet plan
+    int dietPlanId;
 };

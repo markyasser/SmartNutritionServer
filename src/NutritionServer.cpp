@@ -41,11 +41,6 @@ void NutritionServer::logInfo(const std::string &info)
 
 void NutritionServer::populateFoodCategories()
 {
-    // Example categories and items
-    foodCategories_.emplace_back("Carbs", std::vector<std::string>{"Rice", "Pasta", "Bread"});
-    foodCategories_.emplace_back("Protein", std::vector<std::string>{"Chicken", "Beef", "Tofu"});
-    foodCategories_.emplace_back("Sweets", std::vector<std::string>{"Cake", "Ice Cream", "Cookies"});
-    foodCategories_.emplace_back("Veggies", std::vector<std::string>{"Carrots", "Broccoli", "Spinach"});
 }
 
 void NutritionServer::analyzeData()

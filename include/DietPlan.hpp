@@ -1,6 +1,6 @@
 #pragma once
 #include "User.hpp"
-#include "FoodCategory.hpp"
+#include "FoodItem.hpp"
 #include <vector>
 #include <string>
 #include <random>
@@ -8,11 +8,15 @@
 class DietPlan
 {
 public:
-    void createPlan(const User &user, const std::vector<FoodCategory> &categories);
+    DietPlan();
+    void createPlan(const User &user, const std::vector<FoodItem> &categories);
     void display() const;
 
 private:
-    std::vector<std::string> plan_;
+    int id;
+    std::vector<std::string> breakfast_;
+    std::vector<std::string> lunch_;
+    std::vector<std::string> dinner_;
 
     // Utility functions
     std::vector<std::string> getRandomItems(const std::vector<std::string> &items, size_t count);

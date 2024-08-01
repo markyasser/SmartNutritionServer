@@ -1,21 +1,15 @@
-#include "User.hpp"
-#include "NutritionServer.hpp"
+#include "SocketServer.hpp"
 
 int main()
 {
-    NutritionServer &server = NutritionServer::getInstance();
+    // Create a server instance on port 3000
+    SocketServer server(3000);
 
-    // Example: Add users and create plans
-    User user1("Alice", 25, 65.0, 165.0, "Female", 120, 80, false);
-    server.receiveUserInfo(user1);
-    server.generateDietPlan(user1);
+    // Start the server
+    server.start();
 
-    User user2("Bob", 30, 75.0, 180.0, "male", 130, 85, true);
-    server.receiveUserInfo(user2);
-    server.generateDietPlan(user2);
-
-    // Analyze data
-    server.analyzeData();
+    // Stop the server when done (this line may not be reached if the server runs indefinitely)
+    server.stop();
 
     return 0;
 }

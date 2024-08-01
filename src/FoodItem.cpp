@@ -1,7 +1,7 @@
 #include "FoodItem.hpp"
 
 FoodItem::FoodItem(const std::string &name, int calories, int carbs, int protein, int fat, const std::string &meal, const std::string &type, int quantity)
-    : name_(name), calories_(calories), carbs_(carbs), protein_(protein), fat_(fat), meal_(meal), type_(type), quantity_(quantity) {}
+    : name_(name), calories_(calories), carbs_(carbs), protein_(protein), fat_(fat), meal_(meal), type_(type) {}
 
 // Getter methods
 std::string FoodItem::getName() const { return name_; }

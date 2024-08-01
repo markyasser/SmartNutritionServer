@@ -5,6 +5,13 @@
 #include "DietPlan.hpp"
 #include "Logger.hpp"
 #include "Statistics.hpp"
+#include <json.hpp>
+#include <sstream>
+#include <iostream>
+#include <fstream>
+
+// For convenience
+using json = nlohmann::json;
 
 class NutritionServer
 {
@@ -15,12 +22,12 @@ public:
     void generateDietPlan(const User &user);
     void logInfo(const std::string &info);
     void analyzeData();
-    void populateFoodCategories();
+    void populateFoodItems(); // Read from json
 
 private:
     NutritionServer();
     std::vector<User> users_;
-    std::vector<FoodItem> foodCategories_;
+    std::vector<FoodItem> foodItems_;
     Logger logger_;
     Statistics statistics_;
     std::string usersFilePath_;

@@ -17,7 +17,6 @@ public:
     int getFat() const;
     std::string getMeal() const;
     std::string getType() const;
-    int getQuantity() const;
 
 private:
     std::string name_;
@@ -27,5 +26,4 @@ private:
     int fat_;
     std::string meal_;
     std::string type_;
-    int quantity_;
 };

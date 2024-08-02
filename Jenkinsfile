@@ -30,6 +30,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
+                    // Terminate any existing instances of the application
+                    sh 'pkill SmartNutritionServer || true'
+                    
                     // Ensure the deployment directory exists
                     sh "mkdir -p ${DEPLOY_DIR}"
                     
@@ -42,8 +45,6 @@ pipeline {
         stage('Run') {
             steps {
                 script {
-                    // Terminate any existing instances of the application
-                    sh 'pkill SmartNutritionServer || true'
 
                     // Start the application in the background
                     sh "./${DEPLOY_DIR}/SmartNutritionServer &"

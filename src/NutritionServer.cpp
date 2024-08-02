@@ -11,17 +11,26 @@ NutritionServer::NutritionServer()
 {
     // Initialize food Items
     populateFoodItems();
-
     usersFilePath_ = "users.json";
 }
 
-void NutritionServer::receiveUserInfo(const User &user)
+bool NutritionServer::receiveFeedback(int feedback)
+{
+    Feedback feedbackObj;
+    feedbackObj.addFeedback(feedback);
+    logInfo("Received feedback: " + std::to_string(feedback));
+    feedbackObj.writeToFile();
+    return true;
+}
+
+bool NutritionServer::receiveUserInfo(const User &user)
 {
     users_.push_back(user);
     std::ostringstream oss;
     oss << "Received info for user: " << user.getName();
     logInfo(oss.str());
     saveUserInfo(user);
+    return true;
 }
 
 nlohmann::json NutritionServer::generateDietPlan(const User &user)

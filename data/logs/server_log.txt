@@ -1,53 +1,6 @@
-Received info for user: Mark
-User info saved successfully.
-Generated diet plan for user: Mark
-Received info for user: Mark
-User info saved successfully.
-Generated diet plan for user: Mark
-Received info for user: Mark
-User info saved successfully.
-Generated diet plan for user: Mark
-Received info for user: Mark
-User info saved successfully.
-Generated diet plan for user: Mark
-Received info for user: Mark
-User info saved successfully.
-Generated diet plan for user: Mark
-dback: 
-dback: 
-Received info for user: Mark
-User info saved successfully.
-Generated diet plan for user: Mark
-Received info for user: Mark
-User info saved successfully.
-Generated diet plan for user: Mark
-Received info for user: Mark
-User info saved successfully.
-Generated diet plan for user: Mark
-Received info for user: Mark
-User info saved successfully.
-Generated diet plan for user: Mark
-Received info for user: Hany
-User info saved successfully.
-Generated diet plan for user: Hany
-Received info for user: Hany
-User info saved successfully.
-Generated diet plan for user: Hany
-Received info for user: Mona
-User info saved successfully.
-Generated diet plan for user: Mona
-Received info for user: Bichoy
-User info saved successfully.
-Generated diet plan for user: Bichoy
-Received info for user: Bichoy
-User info saved successfully.
-Generated diet plan for user: Bichoy
-Received info for user: karim
-User info saved successfully.
-Generated diet plan for user: karim
-Received info for user: asd
-User info saved successfully.
-Generated diet plan for user: asd
-Received info for user: joe
-User info saved successfully.
-Generated diet plan for user: joe
+Received feedback: 4
+Received feedback: 3
+Received feedback: 5
+Received feedback: 2
+Received feedback: 2
+Received feedback: 2

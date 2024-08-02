@@ -198,5 +198,25 @@
         "is_diabetic": false,
         "name": "joe",
         "weight": 120.0
+    },
+    {
+        "age": 30,
+        "blood_pressure_lower": 80,
+        "blood_pressure_upper": 120,
+        "gender": "male",
+        "height": 190.0,
+        "is_diabetic": false,
+        "name": "karim",
+        "weight": 100.0
+    },
+    {
+        "age": 12,
+        "blood_pressure_lower": 80,
+        "blood_pressure_upper": 120,
+        "gender": "Female",
+        "height": 80.0,
+        "is_diabetic": false,
+        "name": "ads",
+        "weight": 56.0
     }
 ]

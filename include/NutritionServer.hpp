@@ -1,4 +1,8 @@
 #pragma once
+#include <sstream>
+#include <iostream>
+#include <fstream>
+#include <json.hpp>
 #include "JsonManager.hpp"
 #include "Statistics.hpp"
 #include <vector>
@@ -6,10 +10,7 @@
 #include "FoodItem.hpp"
 #include "DietPlan.hpp"
 #include "Logger.hpp"
-#include <json.hpp>
-#include <sstream>
-#include <iostream>
-#include <fstream>
+#include "Feedback.hpp"
 
 // For convenience
 using json = nlohmann::json;
@@ -18,11 +19,13 @@ class NutritionServer
 {
 public:
     static NutritionServer &getInstance();
-    void receiveUserInfo(const User &user);
-    void saveUserInfo(const User &user);
     nlohmann::json generateDietPlan(const User &user);
-    void logInfo(const std::string &info);
     nlohmann::json analyzeData();
+    bool receiveFeedback(int feedback);
+    bool receiveUserInfo(const User &user);
+
+    void saveUserInfo(const User &user);
+    void logInfo(const std::string &info);
     void populateFoodItems(); // Read from json
 
 private:

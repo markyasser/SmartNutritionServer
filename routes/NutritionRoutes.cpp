@@ -41,17 +41,24 @@ void NutritionRoutes::setupRoutes(crow::App<Cors> &app, NutritionServer &server)
 
             nlohmann::json feedbackData = nlohmann::json::parse(req.body);
             int feedback = feedbackData.at("feedback").get<int>();
-            int planId = feedbackData.at("plan_id").get<int>();
 
-            // Log the feedback
-            server.logInfo("Feedback: " + feedback);
+            // Receive feedback from the user
+            bool status = server.receiveFeedback(feedback);
+
             nlohmann::json responseJson;
-            responseJson["status"] = "success";
-            responseJson["message"] = "Feedback received";
-            res.code = 200;
+            if (!status) {
+                responseJson["status"] = "error";
+                responseJson["message"] = "Failed to receive feedback";
+                res.code = 500;
+            }
+            else {
+                responseJson["status"] = "success";
+                responseJson["message"] = "Feedback received";
+                res.code = 200;
+            }
             res.body = responseJson.dump();
-
             return res;
+            
         } catch (const nlohmann::json::exception& e) {
             return crow::response{400, "Invalid JSON data"};
         } });

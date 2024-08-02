@@ -61,8 +61,10 @@ void DietPlan::createPlan(const User &user, const std::vector<FoodItem> &foodIte
     double lunchRatio = 0.3;     // 30% for lunch
     double dinnerRatio = 0.5;    // 50% for dinner
 
+    int day = 1;
     for (auto &dayMeals : weeklyPlan)
     {
+        dayMeals.day = day++;
         // Assign breakfast items considering nutritional needs
         assignMeals(dayMeals.breakfast, breakfastItems, neededCarbs * breakfastRatio, neededProtein * breakfastRatio);
 
@@ -170,7 +172,7 @@ void DietPlan::display() const
     std::cout << "Weekly Diet Plan:\n";
     for (size_t i = 0; i < weeklyPlan.size(); ++i)
     {
-        std::cout << "Day " << (i + 1) << ":\n";
+        std::cout << "Day " << weeklyPlan[i].day << ":\n";
         std::cout << "  Breakfast:\n";
         for (const auto &item : weeklyPlan[i].breakfast)
         {
@@ -193,13 +195,12 @@ nlohmann::json DietPlan::toJson()
 {
     nlohmann::json j;
     j["id"] = id;
-
     // Create a JSON array for the weekly plan
     j["weeklyPlan"] = nlohmann::json::array();
     for (const auto &dayMeals : weeklyPlan)
     {
         nlohmann::json dayJson;
-
+        dayJson["day"] = dayMeals.day;
         // Convert breakfast items to JSON
         dayJson["breakfast"] = nlohmann::json::array();
         for (const auto &item : dayMeals.breakfast)

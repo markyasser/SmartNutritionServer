@@ -8,6 +8,7 @@
 // Structure to hold meals for a day
 struct DayMeals
 {
+    int day;
     std::vector<FoodItem> breakfast;
     std::vector<FoodItem> lunch;
     std::vector<FoodItem> dinner;

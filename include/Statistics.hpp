@@ -16,8 +16,9 @@ private:
     double averageHeight_ = 0.0;
     std::map<int, int> heightHistogram_;
     std::map<int, int> weightHistogram_;
-    double maleDiabeticRatio = 0.0;
-    double femaleDiabeticRatio = 0.0;
+    int totalDiabeticMales = 0;
+    int totalDiabeticFemales = 0;
+    int totalNonDiabetic = 0;
 
     void calculateStatistics(const std::vector<User> &users);
 };

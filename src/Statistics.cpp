@@ -39,23 +39,15 @@ void Statistics::calculateStatistics(const std::vector<User> &users)
             weightHistogram_[weight]++;
 
         // Update the percentage of
-        if (user.getGender() == "male")
-        {
-            totalMen++;
-            if (user.getIsDiabetic())
-                totalDiabeticMen++;
-        }
+        if (user.getGender() == "male" && user.getIsDiabetic())
+            totalDiabeticMales++;
+
+        else if (user.getGender() == "female" && user.getIsDiabetic())
+            totalDiabeticFemales++;
+
         else
-        {
-            if (user.getIsDiabetic())
-                femaleDiabeticRatio++;
-        }
+            totalNonDiabetic++;
     }
-    averageWeight_ /= users.size();
-    averageHeight_ /= users.size();
-    maleDiabeticRatio = (totalMen > 0) ? (totalDiabeticMen * 100.0 / totalMen) : 0.0;
-    int totalWomen = users.size() - totalMen;
-    femaleDiabeticRatio = (totalWomen > 0) ? (femaleDiabeticRatio * 100.0 / totalWomen) : 0.0;
 }
 void Statistics::saveStatistics(const std::string &filePath) const
 {
@@ -81,8 +73,9 @@ nlohmann::json Statistics::toJson() const
     nlohmann::json j;
     j["averageWeight"] = averageWeight_;
     j["averageHeight"] = averageHeight_;
-    j["maleDiabeticRatio"] = maleDiabeticRatio;
-    j["femaleDiabeticRatio"] = femaleDiabeticRatio;
+    j["diabeticMales"] = totalDiabeticMales;
+    j["diabeticFemales"] = totalDiabeticFemales;
+    j["nonDiabetic"] = totalNonDiabetic;
     j["heightHistogram"] = heightHistogram_;
     j["weightHistogram"] = weightHistogram_;
     return j;

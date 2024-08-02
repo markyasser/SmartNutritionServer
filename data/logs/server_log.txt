@@ -33,3 +33,21 @@ Generated diet plan for user: Hany
 Received info for user: Hany
 User info saved successfully.
 Generated diet plan for user: Hany
+Received info for user: Mona
+User info saved successfully.
+Generated diet plan for user: Mona
+Received info for user: Bichoy
+User info saved successfully.
+Generated diet plan for user: Bichoy
+Received info for user: Bichoy
+User info saved successfully.
+Generated diet plan for user: Bichoy
+Received info for user: karim
+User info saved successfully.
+Generated diet plan for user: karim
+Received info for user: asd
+User info saved successfully.
+Generated diet plan for user: asd
+Received info for user: joe
+User info saved successfully.
+Generated diet plan for user: joe

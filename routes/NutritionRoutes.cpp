@@ -2,6 +2,28 @@
 
 void NutritionRoutes::setupRoutes(crow::App<Cors> &app, NutritionServer &server)
 {
+    // Endpoint to analyze data and save statistics
+    CROW_ROUTE(app, "/dashboard").methods("GET"_method)([&server]
+                                                        {
+        crow::response res;
+        
+        // Analyze user data and save statistics
+        nlohmann::json responseJson;
+        responseJson["statistics"] = server.analyzeData();
+        responseJson["rating"] = server.getRating();
+        res.body = responseJson.dump();
+        res.code = 200;
+
+        return res; });
+    // Endpoint to get food items
+    CROW_ROUTE(app, "/food-items").methods("GET"_method)([&server]
+                                                         {
+        crow::response res;
+        res.body = server.getFoodItems().dump();
+        res.code = 200;
+
+        return res; });
+
     // Endpoint to register a user and generate a diet plan
     CROW_ROUTE(app, "/register-user").methods("POST"_method)([&server](const crow::request &req)
                                                              {
@@ -20,20 +42,6 @@ void NutritionRoutes::setupRoutes(crow::App<Cors> &app, NutritionServer &server)
         } catch (const nlohmann::json::exception& e) {
             return crow::response{400, "Invalid JSON data"};
         } });
-
-    // Endpoint to analyze data and save statistics
-    CROW_ROUTE(app, "/dashboard").methods("GET"_method)([&server]
-                                                        {
-        crow::response res;
-        
-        // Analyze user data and save statistics
-        nlohmann::json responseJson;
-        responseJson["statistics"] = server.analyzeData();
-        responseJson["rating"] = server.getRating();
-        res.body = responseJson.dump();
-        res.code = 200;
-
-        return res; });
 
     // Endpoints to set Feedback from the user to the generated diet plan
     CROW_ROUTE(app, "/feedback").methods("POST"_method)([&server](const crow::request &req)

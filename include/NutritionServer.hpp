@@ -22,6 +22,7 @@ public:
     nlohmann::json generateDietPlan(const User &user);
     nlohmann::json analyzeData();
     nlohmann::json getRating();
+    nlohmann::json getFoodItems();
     bool receiveFeedback(int feedback);
     bool receiveUserInfo(const User &user);
 

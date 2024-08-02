@@ -4,3 +4,13 @@ Received feedback: 5
 Received feedback: 2
 Received feedback: 2
 Received feedback: 2
+Received info for user: ahmed
+User info saved successfully.
+Generated diet plan for user: ahmed
+Received info for user: Mark
+User info saved successfully.
+Generated diet plan for user: Mark
+Received info for user: Michael
+User info saved successfully.
+Generated diet plan for user: Michael
+Received feedback: 5

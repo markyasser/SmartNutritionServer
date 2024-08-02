@@ -49,6 +49,17 @@ nlohmann::json NutritionServer::getRating()
     return feedbackObj.toJson();
 }
 
+nlohmann::json NutritionServer::getFoodItems()
+{
+    nlohmann::json foodItemsJson;
+    foodItemsJson["fooditems"] = nlohmann::json::array();
+    for (const auto &item : foodItems_)
+    {
+        foodItemsJson["fooditems"].push_back(item.toJson()["name"]);
+    }
+    return foodItemsJson;
+}
+
 void NutritionServer::logInfo(const std::string &info)
 {
     logger_.log(info);

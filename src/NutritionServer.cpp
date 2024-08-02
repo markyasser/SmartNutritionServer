@@ -43,6 +43,12 @@ nlohmann::json NutritionServer::generateDietPlan(const User &user)
     return plan.toJson();
 }
 
+nlohmann::json NutritionServer::getRating()
+{
+    Feedback feedbackObj = Feedback::readFromFile();
+    return feedbackObj.toJson();
+}
+
 void NutritionServer::logInfo(const std::string &info)
 {
     logger_.log(info);

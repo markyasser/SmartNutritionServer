@@ -24,12 +24,13 @@ public:
     void calculateAverageRating();
 
     // File I/O methods
-    void readFromFile();
+    static Feedback readFromFile();
+    void updateFeedback();
     void writeToFile() const;
 
 private:
     // Member variables
-    const std::string feedbackFilePath_ = "./data/feedback.json";
+    static const std::string feedbackFilePath_;
     int totalFeedbacks_;
     double averageRating_;
     int feedback_; // Last received feedback

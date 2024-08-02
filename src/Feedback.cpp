@@ -1,5 +1,8 @@
 #include "Feedback.hpp"
 
+// Definition of static member variable
+const std::string Feedback::feedbackFilePath_ = "./data/feedback.json";
+
 // Default constructor
 Feedback::Feedback()
 {
@@ -51,7 +54,7 @@ double Feedback::getAverageRating() const
 void Feedback::addFeedback(int newFeedback)
 {
     feedback_ = newFeedback;
-    readFromFile();
+    updateFeedback();
 }
 
 // Private helper method to update total feedbacks
@@ -67,7 +70,7 @@ void Feedback::updateAverageRating(double newAverage)
 }
 
 // Reads feedback data from a file
-void Feedback::readFromFile()
+void Feedback::updateFeedback()
 {
     std::ifstream inputFile(feedbackFilePath_);
     if (inputFile.is_open())
@@ -81,6 +84,21 @@ void Feedback::readFromFile()
         updateAverageRating(newAverage);
         inputFile.close();
     }
+}
+
+// Reads feedback data from a file
+Feedback Feedback::readFromFile()
+{
+    std::ifstream inputFile(feedbackFilePath_);
+    if (inputFile.is_open())
+    {
+        nlohmann::json j;
+        inputFile >> j;
+        Feedback fb = Feedback::fromJson(j);
+        inputFile.close();
+        return fb;
+    }
+    return Feedback();
 }
 
 // Writes feedback data to a file

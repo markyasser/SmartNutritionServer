@@ -21,6 +21,7 @@ public:
     static NutritionServer &getInstance();
     nlohmann::json generateDietPlan(const User &user);
     nlohmann::json analyzeData();
+    nlohmann::json getRating();
     bool receiveFeedback(int feedback);
     bool receiveUserInfo(const User &user);
 

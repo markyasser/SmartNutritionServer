@@ -22,13 +22,15 @@ void NutritionRoutes::setupRoutes(crow::App<Cors> &app, NutritionServer &server)
         } });
 
     // Endpoint to analyze data and save statistics
-    CROW_ROUTE(app, "/analyze-data").methods("GET"_method)([&server]
-                                                           {
+    CROW_ROUTE(app, "/dashboard").methods("GET"_method)([&server]
+                                                        {
         crow::response res;
         
         // Analyze user data and save statistics
-        nlohmann::json statistics = server.analyzeData();
-        res.body = statistics.dump();
+        nlohmann::json responseJson;
+        responseJson["statistics"] = server.analyzeData();
+        responseJson["rating"] = server.getRating();
+        res.body = responseJson.dump();
         res.code = 200;
 
         return res; });
@@ -58,7 +60,7 @@ void NutritionRoutes::setupRoutes(crow::App<Cors> &app, NutritionServer &server)
             }
             res.body = responseJson.dump();
             return res;
-            
+
         } catch (const nlohmann::json::exception& e) {
             return crow::response{400, "Invalid JSON data"};
         } });

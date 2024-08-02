@@ -87,6 +87,7 @@ nlohmann::json NutritionServer::analyzeData()
     std::vector<User> users;
     bool success = JsonManager<User>::readFromFile(usersFilePath_, users);
 
+    Statistics statistics_;
     statistics_.analyze(users);
     statistics_.saveStatistics("data/logs/statistics.txt");
     return statistics_.toJson();

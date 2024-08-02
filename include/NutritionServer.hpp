@@ -30,7 +30,6 @@ private:
     std::vector<User> users_;
     std::vector<FoodItem> foodItems_;
     Logger logger_;
-    Statistics statistics_;
     std::string usersFilePath_;
 
     // Utility functions

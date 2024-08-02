@@ -42,14 +42,11 @@ pipeline {
         stage('Run') {
             steps {
                 script {
-                    // Run the application
-                    dir("${DEPLOY_DIR}") {
-                        // Terminate any existing instances of the application
-                        sh 'pkill SmartNutritionServer || true'
+                    // Terminate any existing instances of the application
+                    sh 'pkill SmartNutritionServer || true'
 
-                        // Start the application in the background
-                        sh './SmartNutritionServer &'
-                    }
+                    // Start the application in the background
+                    sh "./${DEPLOY_DIR}/SmartNutritionServer &"
                 }
             }
         }

@@ -34,7 +34,7 @@ pipeline {
                     sh 'sudo lsof -t -i :4000 | xargs sudo kill -9'
 
                     // Start the application in the background
-                    sh "./${BUILD_DIR}/SmartNutritionServer &"
+                    sh "nohup ./${BUILD_DIR}/SmartNutritionServer > /dev/null 2>&1 &"
                 }
             }
         }

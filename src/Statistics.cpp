@@ -17,17 +17,46 @@ void Statistics::calculateStatistics(const std::vector<User> &users)
         averageHeight_ = 0.0;
         return;
     }
-    averageWeight_ = std::accumulate(users.begin(), users.end(), 0.0,
-                                     [](double sum, const User &user)
-                                     { return sum + user.getWeight(); }) /
-                     users.size();
+    int totalMen = 0;
+    int totalDiabeticMen = 0;
+    for (auto user : users)
+    {
+        averageWeight_ += user.getWeight();
+        averageHeight_ += user.getHeight();
 
-    averageHeight_ = std::accumulate(users.begin(), users.end(), 0.0,
-                                     [](double sum, const User &user)
-                                     { return sum + user.getHeight(); }) /
-                     users.size();
+        // Update the height histogram
+        int height = user.getHeight();
+        if (heightHistogram_.find(height) == heightHistogram_.end())
+            heightHistogram_[height] = 1;
+        else
+            heightHistogram_[height]++;
+
+        // Update the weight histogram
+        int weight = user.getWeight();
+        if (weightHistogram_.find(weight) == weightHistogram_.end())
+            weightHistogram_[weight] = 1;
+        else
+            weightHistogram_[weight]++;
+
+        // Update the percentage of
+        if (user.getGender() == "male")
+        {
+            totalMen++;
+            if (user.getIsDiabetic())
+                totalDiabeticMen++;
+        }
+        else
+        {
+            if (user.getIsDiabetic())
+                femaleDiabeticRatio++;
+        }
+    }
+    averageWeight_ /= users.size();
+    averageHeight_ /= users.size();
+    maleDiabeticRatio = (totalMen > 0) ? (totalDiabeticMen * 100.0 / totalMen) : 0.0;
+    int totalWomen = users.size() - totalMen;
+    femaleDiabeticRatio = (totalWomen > 0) ? (femaleDiabeticRatio * 100.0 / totalWomen) : 0.0;
 }
-
 void Statistics::saveStatistics(const std::string &filePath) const
 {
     std::ofstream outFile(filePath);
@@ -52,5 +81,9 @@ nlohmann::json Statistics::toJson() const
     nlohmann::json j;
     j["averageWeight"] = averageWeight_;
     j["averageHeight"] = averageHeight_;
+    j["maleDiabeticRatio"] = maleDiabeticRatio;
+    j["femaleDiabeticRatio"] = femaleDiabeticRatio;
+    j["heightHistogram"] = heightHistogram_;
+    j["weightHistogram"] = weightHistogram_;
     return j;
 }

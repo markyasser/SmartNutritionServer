@@ -88,5 +88,15 @@
         "is_diabetic": false,
         "name": "Mark",
         "weight": 71.0
+    },
+    {
+        "age": 24,
+        "blood_pressure_lower": 80,
+        "blood_pressure_upper": 120,
+        "gender": "male",
+        "height": 180.1,
+        "is_diabetic": false,
+        "name": "Mark",
+        "weight": 71.0
     }
 ]

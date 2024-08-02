@@ -5,7 +5,7 @@ int main()
 {
     // Create Crow application instance
     crow::SimpleApp app;
-    int port = 3000;
+    int port = 4000;
 
     // Create an instance of NutritionServer
     NutritionServer &server = NutritionServer::getInstance();

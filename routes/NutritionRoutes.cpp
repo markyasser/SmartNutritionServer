@@ -1,5 +1,13 @@
 #include "NutritionRoutes.hpp"
 
+// CORS middleware function
+void addCorsHeaders(crow::response &res)
+{
+    res.add_header("Access-Control-Allow-Origin", "*");                   // Allow all origins
+    res.add_header("Access-Control-Allow-Methods", "POST, GET, OPTIONS"); // Allow these methods
+    res.add_header("Access-Control-Allow-Headers", "Content-Type");       // Allow these headers
+}
+
 void NutritionRoutes::setupRoutes(crow::SimpleApp &app, NutritionServer &server)
 {
     // Endpoint to register a user and generate a diet plan
@@ -12,9 +20,12 @@ void NutritionRoutes::setupRoutes(crow::SimpleApp &app, NutritionServer &server)
 
             // Register the user and generate a diet plan
             server.receiveUserInfo(user);
-            nlohmann::json res = server.generateDietPlan(user);
-
-            return crow::response{200, res.dump()};
+            nlohmann::json dietPlan = server.generateDietPlan(user);
+            crow::response res;
+            addCorsHeaders(res);
+            res.body = dietPlan.dump();
+            res.code = 200;
+            return res;
         } catch (const nlohmann::json::exception& e) {
             return crow::response{400, "Invalid JSON data"};
         } });
@@ -23,25 +34,37 @@ void NutritionRoutes::setupRoutes(crow::SimpleApp &app, NutritionServer &server)
     app.route_dynamic("/analyze-data")
         .methods("GET"_method)([&server]
                                {
+        crow::response res;
+        addCorsHeaders(res);
             
         // Analyze user data and save statistics
-        nlohmann::json res = server.analyzeData();
+        nlohmann::json statistics = server.analyzeData();
+        res.body = statistics.dump();
+        res.code = 200;
 
-        return crow::response{200, res.dump()}; });
+        return res; });
 
     // Endpoints to set Feedback from the user to the generated diet plan
     app.route_dynamic("/feedback")
         .methods("POST"_method)([&server](const crow::request &req)
                                 {
         try {
+            crow::response res;
+            addCorsHeaders(res);
+
             nlohmann::json feedbackData = nlohmann::json::parse(req.body);
             int feedback = feedbackData.at("feedback").get<int>();
             int planId = feedbackData.at("plan_id").get<int>();
 
             // Log the feedback
             server.logInfo("Feedback: " + feedback);
+            nlohmann::json responseJson;
+            responseJson["status"] = "success";
+            responseJson["message"] = "Feedback received";
+            res.code = 200;
+            res.body = responseJson.dump();
 
-            return crow::response{200, "Feedback received"};
+            return res;
         } catch (const nlohmann::json::exception& e) {
             return crow::response{400, "Invalid JSON data"};
         } });

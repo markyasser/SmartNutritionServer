@@ -31,10 +31,12 @@ pipeline {
             steps {
                 script {
                     // Terminate any existing instances of the application
-                    sh 'sudo lsof -t -i :4000 | xargs sudo kill -9'
+                    // sh 'sudo lsof -t -i :4000 | xargs sudo kill -9'
 
                     // Start the application in the background
-                    sh "./${BUILD_DIR}/SmartNutritionServer"
+                    sh '''
+                        nohup ./${BUILD_DIR}/SmartNutritionServer > ${BUILD_DIR}/server.log 2>&1 &
+                    '''
                 }
             }
         }

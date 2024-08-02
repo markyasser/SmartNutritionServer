@@ -38,6 +38,6 @@ private:
     double calculateNeededVeggies(const User &user);
     double calculateDailyCalories(const User &user);
 
-    std::vector<FoodItem> getRandomItems(const std::vector<FoodItem> &items, size_t count);
+    std::vector<FoodItem> getRandomItems(const std::vector<FoodItem> &items, const std::vector<FoodItem> &execludedItems, size_t count);
     void assignMeals(std::vector<FoodItem> &meal, const std::vector<FoodItem> &availableItems, double neededCarbs, double neededProtein);
 };

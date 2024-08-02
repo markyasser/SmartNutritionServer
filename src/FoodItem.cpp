@@ -3,6 +3,21 @@
 FoodItem::FoodItem(const std::string &name, int calories, int carbs, int protein, int fat, const std::string &meal, const std::string &type, int quantity)
     : name_(name), calories_(calories), carbs_(carbs), protein_(protein), fat_(fat), meal_(meal), type_(type) {}
 
+bool FoodItem::operator==(const FoodItem &other) const
+{
+    return name_ == other.getName() && calories_ == other.getCalories() && carbs_ == other.getCarbs() && protein_ == other.getProtein() && fat_ == other.getFat() && meal_ == other.getMeal() && type_ == other.getType();
+}
+// Implementing the less-than operator
+bool FoodItem::operator<(const FoodItem &other) const
+{
+    // Example comparison: compare based on `name_` and `calories_` as a tie-breaker
+    if (name_ != other.name_)
+    {
+        return name_ < other.name_;
+    }
+    return calories_ < other.calories_;
+}
+
 // Static method to create a FoodItem object from JSON data
 FoodItem FoodItem::fromJson(const std::string &name, const nlohmann::json &j)
 {

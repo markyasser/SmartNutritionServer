@@ -14,3 +14,20 @@ Received info for user: Michael
 User info saved successfully.
 Generated diet plan for user: Michael
 Received feedback: 5
+Received info for user: Mona
+User info saved successfully.
+Generated diet plan for user: Mona
+Received info for user: zizo
+User info saved successfully.
+Generated diet plan for user: zizo
+Received feedback: 5
+Received info for user: Mona
+User info saved successfully.
+Generated diet plan for user: Mona
+Received info for user: zizo
+User info saved successfully.
+Generated diet plan for user: zizo
+Received feedback: 5
+Received info for user: michael
+User info saved successfully.
+Generated diet plan for user: michael

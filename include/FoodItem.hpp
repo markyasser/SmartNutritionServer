@@ -21,6 +21,9 @@ public:
     static FoodItem fromJson(const std::string &name, const nlohmann::json &j);
     nlohmann::json toJson() const;
 
+    bool operator==(const FoodItem &other) const;
+    bool operator<(const FoodItem &other) const;
+
 private:
     std::string name_;
     int calories_;

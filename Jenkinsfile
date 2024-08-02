@@ -31,13 +31,7 @@ pipeline {
             steps {
                 script {
                     // Terminate any existing instances of the application
-                    sh '''
-                        # Find PIDs listening on port 4000 and kill them
-                        pids=$(sudo lsof -t -i :4000)
-                        if [ ! -z "$pids" ]; then
-                            sudo kill -9 $pids
-                        fi
-                    '''
+                    sh 'sudo lsof -t -i :4000 | xargs sudo kill -9'
 
                     // Start the application in the background
                     sh "nohup ./${BUILD_DIR}/SmartNutritionServer > /dev/null 2>&1 &"

@@ -1,28 +1,19 @@
 #include "NutritionRoutes.hpp"
 
-// CORS middleware function
-void addCorsHeaders(crow::response &res)
-{
-    res.add_header("Access-Control-Allow-Origin", "*");                   // Allow all origins
-    res.add_header("Access-Control-Allow-Methods", "POST, GET, OPTIONS"); // Allow these methods
-    res.add_header("Access-Control-Allow-Headers", "Content-Type");       // Allow these headers
-}
-
-void NutritionRoutes::setupRoutes(crow::SimpleApp &app, NutritionServer &server)
+void NutritionRoutes::setupRoutes(crow::App<Cors> &app, NutritionServer &server)
 {
     // Endpoint to register a user and generate a diet plan
-    app.route_dynamic("/register-user")
-        .methods("POST"_method)([&server](const crow::request &req)
-                                {
+    CROW_ROUTE(app, "/register-user").methods("POST"_method)([&server](const crow::request &req)
+                                                             {
         try {
+            crow::response res;
+            std::cout << req.url << std::endl;
             nlohmann::json userData = nlohmann::json::parse(req.body);
             User user = User::fromJson(userData);
-
+            
             // Register the user and generate a diet plan
             server.receiveUserInfo(user);
             nlohmann::json dietPlan = server.generateDietPlan(user);
-            crow::response res;
-            addCorsHeaders(res);
             res.body = dietPlan.dump();
             res.code = 200;
             return res;
@@ -31,12 +22,10 @@ void NutritionRoutes::setupRoutes(crow::SimpleApp &app, NutritionServer &server)
         } });
 
     // Endpoint to analyze data and save statistics
-    app.route_dynamic("/analyze-data")
-        .methods("GET"_method)([&server]
-                               {
+    CROW_ROUTE(app, "/analyze-data").methods("GET"_method)([&server]
+                                                           {
         crow::response res;
-        addCorsHeaders(res);
-            
+        
         // Analyze user data and save statistics
         nlohmann::json statistics = server.analyzeData();
         res.body = statistics.dump();
@@ -45,12 +34,10 @@ void NutritionRoutes::setupRoutes(crow::SimpleApp &app, NutritionServer &server)
         return res; });
 
     // Endpoints to set Feedback from the user to the generated diet plan
-    app.route_dynamic("/feedback")
-        .methods("POST"_method)([&server](const crow::request &req)
-                                {
+    CROW_ROUTE(app, "/feedback").methods("POST"_method)([&server](const crow::request &req)
+                                                        {
         try {
             crow::response res;
-            addCorsHeaders(res);
 
             nlohmann::json feedbackData = nlohmann::json::parse(req.body);
             int feedback = feedbackData.at("feedback").get<int>();

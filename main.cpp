@@ -4,7 +4,7 @@
 int main()
 {
     // Create Crow application instance
-    crow::SimpleApp app;
+    crow::App<Cors> app; // Add Cors middleware to the app
     int port = 4000;
 
     // Create an instance of NutritionServer

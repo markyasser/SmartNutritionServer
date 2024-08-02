@@ -27,26 +27,14 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
-            steps {
-                script {
-                    // Terminate any existing instances of the application
-                    // sh 'pkill SmartNutritionServer || true'
-                    
-                    // Ensure the deployment directory exists
-                    sh "mkdir -p ${DEPLOY_DIR}"
-                    
-                    // Copy the built application to the deployment directory
-                    sh "cp ${BUILD_DIR}/SmartNutritionServer ${DEPLOY_DIR}/"
-                }
-            }
-        }
-
         stage('Run') {
             steps {
                 script {
+                    // Terminate any existing instances of the application
+                    sh 'sudo lsof -t -i :4000 | xargs sudo kill -9'
+
                     // Start the application in the background
-                    sh "./${DEPLOY_DIR}/SmartNutritionServer &"
+                    sh "./${BUILD_DIR}/SmartNutritionServer &"
                 }
             }
         }

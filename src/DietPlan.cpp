@@ -40,7 +40,16 @@ void DietPlan::createPlan(const User &user, const std::vector<FoodItem> &foodIte
     std::vector<FoodItem> lunchItems;
     std::vector<FoodItem> dinnerItems;
 
+    std::vector<FoodItem> filteredItems;
+    std::set<std::string> excludedFoods = user.getExcludedFoods();
     for (const auto &item : foodItems)
+    {
+        if (excludedFoods.find(item.getName()) == excludedFoods.end())
+        {
+            filteredItems.push_back(item);
+        }
+    }
+    for (const auto &item : filteredItems)
     {
         if (item.getMeal() == "breakfast")
         {

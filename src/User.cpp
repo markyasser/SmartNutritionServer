@@ -1,6 +1,6 @@
 #include "User.hpp"
 
-User::User(const std::string &name, int age, double weight, double height, const std::string &gender, int bloodPressureUpper, int bloodPressureLower, bool isDiabetic, std::vector<std::string> excludedFoods = {})
+User::User(const std::string &name, int age, double weight, double height, const std::string &gender, int bloodPressureUpper, int bloodPressureLower, bool isDiabetic, std::set<std::string> excludedFoods = {})
 {
     name_ = name;
     age_ = age;
@@ -53,7 +53,7 @@ bool User::getIsDiabetic() const
     return isDiabetic_;
 }
 
-std::vector<std::string> User::getExcludedFoods() const
+std::set<std::string> User::getExcludedFoods() const
 {
     return excludedFoods_;
 }
@@ -81,5 +81,5 @@ User User::fromJson(const nlohmann::json &j)
                 j.at("blood_pressure_upper").get<int>(),
                 j.at("blood_pressure_lower").get<int>(),
                 j.at("is_diabetic").get<bool>(),
-                j.at("excludedFoods").get<std::vector<std::string>>());
+                j.at("excludedFoods").get<std::set<std::string>>());
 }

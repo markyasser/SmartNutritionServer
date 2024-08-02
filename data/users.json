@@ -215,5 +215,66 @@
         "is_diabetic": false,
         "name": "Maha",
         "weight": 71.0
+    },
+    {
+        "age": 23,
+        "blood_pressure_lower": 78,
+        "blood_pressure_upper": 123,
+        "excludedFoods": [
+            "broccoli",
+            "egg",
+            "fish"
+        ],
+        "gender": "Female",
+        "height": 124.0,
+        "is_diabetic": false,
+        "name": "hana",
+        "weight": 56.0
+    },
+    {
+        "age": 45,
+        "blood_pressure_lower": 70,
+        "blood_pressure_upper": 150,
+        "excludedFoods": [
+            "broccoli",
+            "carrot",
+            "chocolate",
+            "egg",
+            "fish",
+            "ice_cream",
+            "milk"
+        ],
+        "gender": "male",
+        "height": 167.0,
+        "is_diabetic": false,
+        "name": "kiro",
+        "weight": 78.0
+    },
+    {
+        "age": 43,
+        "blood_pressure_lower": 60,
+        "blood_pressure_upper": 123,
+        "excludedFoods": [
+            "chicken",
+            "chocolate"
+        ],
+        "gender": "male",
+        "height": 190.0,
+        "is_diabetic": true,
+        "name": "markos",
+        "weight": 90.0
+    },
+    {
+        "age": 21,
+        "blood_pressure_lower": 89,
+        "blood_pressure_upper": 123,
+        "excludedFoods": [
+            "ice_cream"
+        ],
+        "gender": "Female",
+        "height": 150.0,
+        "is_diabetic": false,
+        "name": "karen",
+        "weight": 44.0
     }
 ]

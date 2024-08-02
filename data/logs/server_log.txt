@@ -42,3 +42,22 @@ Generated diet plan for user: Maha
 Received info for user: Maha
 User info saved successfully.
 Generated diet plan for user: Maha
+Received feedback: 5
+Received info for user: hana
+User info saved successfully.
+Generated diet plan for user: hana
+Received feedback: 5
+Received info for user: kiro
+User info saved successfully.
+Generated diet plan for user: kiro
+Received feedback: 5
+Received info for user: markos
+User info saved successfully.
+Generated diet plan for user: markos
+Received feedback: 5
+Received info for user: karen
+User info saved successfully.
+Generated diet plan for user: karen
+Received feedback: 5
+Received feedback: 5
+Received feedback: 5

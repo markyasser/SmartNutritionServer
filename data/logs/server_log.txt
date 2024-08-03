@@ -8,3 +8,7 @@
 [19:39:07] UserMark Yasser info saved successfully.
 [19:39:07] Generated diet plan for user: Mark Yasser
 [19:40:11] Food items successfully populated from JSON file.
+[20:01:15] Retrieved food items.
+[20:01:51] Retrieved food items.
+[20:02:27] Data analysis complete.
+[20:02:27] Retrieved feedback rating.

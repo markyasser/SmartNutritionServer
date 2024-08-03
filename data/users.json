@@ -125,5 +125,18 @@
         "name": "Marko",
         "sedentary_activity_level": 1.375,
         "weight": 71.0
+    },
+    {
+        "age": 24,
+        "excludedFoods": [
+            "egg"
+        ],
+        "gender": "male",
+        "height": 164.0,
+        "is_diabetic": false,
+        "is_high_blood_pressure": false,
+        "name": "Mark Yasser",
+        "sedentary_activity_level": 1.2000000476837158,
+        "weight": 71.0
     }
 ]

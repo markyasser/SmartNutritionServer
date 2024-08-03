@@ -8,7 +8,6 @@ class Statistics
 public:
     void analyze(const std::vector<User> &users);
     void saveStatistics(const std::string &filePath) const;
-    void display() const;
     nlohmann::json toJson() const;
 
 private:

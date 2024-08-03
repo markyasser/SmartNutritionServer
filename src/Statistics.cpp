@@ -52,23 +52,42 @@ std::string Statistics::determineRange(int value, int rangeSize) const
     int upperBound = lowerBound + rangeSize - 1;
     return std::to_string(lowerBound) + "-" + std::to_string(upperBound);
 }
+
 void Statistics::saveStatistics(const std::string &filePath) const
 {
     std::ofstream outFile(filePath);
     if (outFile.is_open())
     {
         outFile << std::fixed << std::setprecision(2);
+
+        // Save average weight and height
         outFile << "Average Weight: " << averageWeight_ << " kg" << std::endl;
         outFile << "Average Height: " << averageHeight_ << " cm" << std::endl;
+
+        // Save diabetic statistics
+        outFile << "Total Diabetic Males: " << totalDiabeticMales << std::endl;
+        outFile << "Total Diabetic Females: " << totalDiabeticFemales << std::endl;
+        outFile << "Total Non-Diabetic: " << totalNonDiabetic << std::endl;
+
+        // Save histograms
+        outFile << "Height Histogram:" << std::endl;
+        for (const auto &entry : heightHistogram_)
+        {
+            outFile << "  " << entry.first << ": " << entry.second << std::endl;
+        }
+
+        outFile << "Weight Histogram:" << std::endl;
+        for (const auto &entry : weightHistogram_)
+        {
+            outFile << "  " << entry.first << ": " << entry.second << std::endl;
+        }
+
         outFile.close();
     }
-}
-
-void Statistics::display() const
-{
-    std::cout << std::fixed << std::setprecision(2);
-    std::cout << "Average Weight: " << averageWeight_ << " kg" << std::endl;
-    std::cout << "Average Height: " << averageHeight_ << " cm" << std::endl;
+    else
+    {
+        std::cerr << "Unable to open file: " << filePath << std::endl;
+    }
 }
 
 nlohmann::json Statistics::toJson() const

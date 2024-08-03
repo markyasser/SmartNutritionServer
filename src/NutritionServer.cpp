@@ -2,6 +2,7 @@
 
 NutritionServer &NutritionServer::getInstance()
 {
+    logger_.log("Initiated NutritionServer");
     static NutritionServer instance;
     return instance;
 }
@@ -18,7 +19,7 @@ bool NutritionServer::receiveFeedback(int feedback)
 {
     Feedback feedbackObj;
     feedbackObj.addFeedback(feedback);
-    logInfo("Received feedback: " + std::to_string(feedback));
+    logger_.log("Received feedback: " + std::to_string(feedback));
     feedbackObj.writeToFile();
     return true;
 }
@@ -28,8 +29,9 @@ bool NutritionServer::receiveUserInfo(const User &user)
     users_.push_back(user);
     std::ostringstream oss;
     oss << "Received info for user: " << user.getName();
-    logInfo(oss.str());
+    logger_.log(oss.str());
     saveUserInfo(user);
+    logger_.log("User " + user.getName() + " info saved successfully.");
     return true;
 }
 
@@ -37,15 +39,14 @@ nlohmann::json NutritionServer::generateDietPlan(const User &user)
 {
     DietPlan plan;
     plan.createPlan(user, foodItems_);
-    // Save or send the plan (stubbed)
-    logInfo("Generated diet plan for user: " + user.getName());
-    // plan.display();
+    logger_.log("Generated diet plan for user: " + user.getName());
     return plan.toJson();
 }
 
 nlohmann::json NutritionServer::getRating()
 {
     Feedback feedbackObj = Feedback::readFromFile();
+    logger_.log("Retrieved feedback rating.");
     return feedbackObj.toJson();
 }
 
@@ -57,12 +58,8 @@ nlohmann::json NutritionServer::getFoodItems()
     {
         foodItemsJson["fooditems"].push_back(item->toJson()["name"]);
     }
+    logger_.log("Retrieved food items.");
     return foodItemsJson;
-}
-
-void NutritionServer::logInfo(const std::string &info)
-{
-    logger_.log(info);
 }
 
 void NutritionServer::populateFoodItems()
@@ -75,6 +72,7 @@ void NutritionServer::populateFoodItems()
     if (!file.is_open())
     {
         std::cerr << "Failed to open file: " << filePath << std::endl;
+        logger_.log("Failed to open file: " + filePath);
         return;
     }
 
@@ -87,6 +85,7 @@ void NutritionServer::populateFoodItems()
     catch (const std::exception &e)
     {
         std::cerr << "Failed to parse JSON: " << e.what() << std::endl;
+        logger_.log("Failed to parse JSON: " + std::string(e.what()));
         return;
     }
 
@@ -122,11 +121,13 @@ void NutritionServer::populateFoodItems()
         }
         catch (const std::exception &e)
         {
+            logger_.log("Error processing food item: " + std::string(e.what()));
             std::cerr << "Error processing food item: " << e.what() << std::endl;
         }
     }
 
     std::cout << "Food items successfully populated from JSON file." << std::endl;
+    logger_.log("Food items successfully populated from JSON file.");
 }
 
 nlohmann::json NutritionServer::analyzeData()
@@ -138,6 +139,7 @@ nlohmann::json NutritionServer::analyzeData()
     Statistics statistics_;
     statistics_.analyze(users);
     statistics_.saveStatistics("data/logs/statistics.txt");
+    logger_.log("Data analysis complete.");
     return statistics_.toJson();
 }
 
@@ -151,13 +153,5 @@ void NutritionServer::saveUserInfo(const User &user)
     users.push_back(user);
 
     // Write the updated user list to file
-    bool writesuccess = JsonManager<User>::writeToFile(usersFilePath_, users);
-    if (writesuccess)
-    {
-        logInfo("User info saved successfully.");
-    }
-    else
-    {
-        logInfo("Failed to save user info.");
-    }
+    JsonManager<User>::writeToFile(usersFilePath_, users);
 }

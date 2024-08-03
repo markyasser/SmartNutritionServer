@@ -1,2 +1,22 @@
-Average Weight: 60.89 kg
-Average Height: 133.78 cm
+Average Weight: 62.82 kg
+Average Height: 142.20 cm
+Total Diabetic Males: 6
+Total Diabetic Females: 0
+Total Non-Diabetic: 5
+Height Histogram:
+  10-19: 1
+  120-129: 1
+  140-149: 1
+  150-159: 1
+  180-189: 4
+  20-29: 1
+  30-39: 1
+  340-349: 1
+Weight Histogram:
+  120-124: 1
+  30-34: 3
+  45-49: 1
+  55-59: 2
+  70-74: 2
+  75-79: 1
+  85-89: 1

@@ -30,7 +30,6 @@ public:
     bool receiveUserInfo(const User &user);
 
     void saveUserInfo(const User &user);
-    void logInfo(const std::string &info);
     void populateFoodItems(); // Read from json
 
 private:

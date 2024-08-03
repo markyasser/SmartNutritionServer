@@ -1,9 +1,10 @@
 #pragma once
-#include "User.hpp"
-#include "FoodItem.hpp"
 #include <vector>
 #include <string>
 #include <random>
+#include "User.hpp"
+#include "FoodItem.hpp"
+#include "User.hpp"
 
 // Structure to hold meals for a day
 struct DayMeals
@@ -29,6 +30,7 @@ public:
 private:
     int id;
     int feedback; // 0 to 5 rating to the plan given by the user
+    User user_;
     std::vector<DayMeals> weeklyPlan;
 
     // Utility functions

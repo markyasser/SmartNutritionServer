@@ -1,5 +1,16 @@
 #include "User.hpp"
 
+User::User()
+{
+    name_ = "";
+    age_ = 0;
+    weight_ = 0;
+    height_ = 0;
+    bloodPressureLower_ = 0;
+    bloodPressureUpper_ = 0;
+    isDiabetic_ = false;
+}
+
 User::User(const std::string &name, int age, double weight, double height, const std::string &gender, int bloodPressureUpper, int bloodPressureLower, bool isDiabetic, std::set<std::string> excludedFoods = {})
 {
     name_ = name;

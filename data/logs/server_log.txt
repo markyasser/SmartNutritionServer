@@ -67,3 +67,9 @@ Generated diet plan for user: Maha
 Received info for user: Maha
 User info saved successfully.
 Generated diet plan for user: Maha
+Received info for user: Maha
+User info saved successfully.
+Generated diet plan for user: Maha
+Received info for user: Maha
+User info saved successfully.
+Generated diet plan for user: Maha

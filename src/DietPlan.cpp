@@ -11,6 +11,7 @@ DietPlan::DietPlan() : weeklyPlan(7)
 
 void DietPlan::createPlan(const User &user, const std::vector<FoodItem *> &foodItems)
 {
+    user_ = user;
     // Get user's needed carbs, protein, sweets, veggies from his weight, height, age, IsDiabetic, blood pressure
     double weight = user.getWeight();
     double height = user.getHeight();
@@ -67,8 +68,8 @@ void DietPlan::createPlan(const User &user, const std::vector<FoodItem *> &foodI
 
     // Distribute nutritional needs
     double breakfastRatio = 0.2; // 20% for breakfast
-    double lunchRatio = 0.3;     // 30% for lunch
-    double dinnerRatio = 0.5;    // 50% for dinner
+    double lunchRatio = 0.5;     // 50% for lunch
+    double dinnerRatio = 0.3;    // 30% for dinner
 
     int day = 1;
     for (auto &dayMeals : weeklyPlan)

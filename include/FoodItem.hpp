@@ -19,9 +19,9 @@ public:
     int getFat() const;
     std::string getMeal() const;
     std::string getType() const;
-    nlohmann::json toJson() const;
 
     virtual void fromJson(const std::string &name, const nlohmann::json &j) = 0;
+    virtual nlohmann::json toJson() const;
     virtual int getQuantity() const = 0;
 
     bool operator==(const FoodItem &other) const;

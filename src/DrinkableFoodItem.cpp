@@ -29,7 +29,7 @@ void DrinkableFoodItem::fromJson(const std::string &name, const nlohmann::json &
 nlohmann::json DrinkableFoodItem::toJson() const
 {
     nlohmann::json baseJson = FoodItem::toJson(); // Get common attributes
-    baseJson["quantity"] = quantityInMilliliters_;
+    baseJson["quantity"] = std::to_string(quantityInMilliliters_) + " ml";
 
     return baseJson;
 }

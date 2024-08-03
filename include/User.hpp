@@ -7,6 +7,7 @@
 class User
 {
 public:
+    User();
     User(const std::string &name, int age, double weight, double height, const std::string &gender,
          int bloodPressureUpper, int bloodPressureLower, bool isDiabetic, std::set<std::string> excludedFoods);
     std::string getName() const;

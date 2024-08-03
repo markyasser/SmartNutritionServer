@@ -22,14 +22,7 @@ bool FoodItem::operator<(const FoodItem &other) const
 
 nlohmann::json FoodItem::toJson() const
 {
-    return {
-        {"name", name_},
-        {"calories", calories_},
-        {"carbs", carbs_},
-        {"protein", protein_},
-        {"fat", fat_},
-        {"meal", meal_},
-        {"type", type_}};
+    return {{"name", name_}};
 }
 
 // Getter methods

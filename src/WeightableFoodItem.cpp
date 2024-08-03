@@ -29,7 +29,7 @@ void WeightableFoodItem::fromJson(const std::string &name, const nlohmann::json 
 nlohmann::json WeightableFoodItem::toJson() const
 {
     nlohmann::json baseJson = FoodItem::toJson(); // Get common attributes
-    baseJson["quantity"] = quantityInGrams_;
+    baseJson["quantity"] = std::to_string(quantityInGrams_) + " grams";
 
     return baseJson;
 }

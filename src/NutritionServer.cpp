@@ -2,7 +2,6 @@
 
 NutritionServer &NutritionServer::getInstance()
 {
-    logger_.log("Initiated NutritionServer");
     static NutritionServer instance;
     return instance;
 }
@@ -10,6 +9,7 @@ NutritionServer &NutritionServer::getInstance()
 NutritionServer::NutritionServer()
     : logger_("data/logs/server_log.txt")
 {
+    logger_.log("Initiated NutritionServer");
     // Initialize food Items
     populateFoodItems();
     usersFilePath_ = "users.json";

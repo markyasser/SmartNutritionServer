@@ -30,8 +30,11 @@ pipeline {
         stage('Run') {
             steps {
                 script {
+                    // Grand write permissions to the data directory
+                    sh 'chmod -R a+w data' 
+
                     // Terminate any existing instances of the application
-                    // sh 'sudo lsof -t -i :4000 | xargs sudo kill -9'
+                    sh 'lsof -t -i :4000 | grep -v "^$" | xargs -r sudo kill -9'
 
                     // Start the application in the background
                     sh "screen -dmS smartnutrition ./${BUILD_DIR}/SmartNutritionServer"

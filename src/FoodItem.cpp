@@ -1,6 +1,6 @@
 #include "FoodItem.hpp"
 
-FoodItem::FoodItem(const std::string &name, int calories, int carbs, int protein, int fat, const std::string &meal, const std::string &type, int quantity)
+FoodItem::FoodItem(const std::string &name, int calories, int carbs, int protein, int fat, const std::string &meal, const std::string &type)
     : name_(name), calories_(calories), carbs_(carbs), protein_(protein), fat_(fat), meal_(meal), type_(type) {}
 
 bool FoodItem::operator==(const FoodItem &other) const
@@ -28,7 +28,7 @@ FoodItem FoodItem::fromJson(const std::string &name, const nlohmann::json &j)
     std::string meal = j.at("meal").get<std::string>();
     std::string type = j.at("type").get<std::string>();
 
-    return FoodItem(name, calories, carbs, protein, fat, meal, type, 1);
+    return FoodItem(name, calories, carbs, protein, fat, meal, type);
 }
 
 nlohmann::json FoodItem::toJson() const

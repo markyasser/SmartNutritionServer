@@ -9,7 +9,7 @@
 class FoodItem
 {
 public:
-    FoodItem(const std::string &name, int calories, int carbs, int protein, int fat, const std::string &meal, const std::string &type, int quantity);
+    FoodItem(const std::string &name, int calories, int carbs, int protein, int fat, const std::string &meal, const std::string &type);
     // Getter methods
     std::string getName() const;
     int getCalories() const;

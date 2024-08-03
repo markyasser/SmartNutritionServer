@@ -21,14 +21,14 @@ bool FoodItem::operator<(const FoodItem &other) const
 // Static method to create a FoodItem object from JSON data
 FoodItem FoodItem::fromJson(const std::string &name, const nlohmann::json &j)
 {
+    std::string meal_type = j.at("meal").get<std::string>();
     int calories = j.at("calories").get<int>();
     int carbs = j.at("carbs").get<int>();
     int protein = j.at("protein").get<int>();
     int fat = j.at("fat").get<int>();
-    std::string meal = j.at("meal").get<std::string>();
     std::string type = j.at("type").get<std::string>();
 
-    return FoodItem(name, calories, carbs, protein, fat, meal, type);
+    return FoodItem(name, calories, carbs, protein, fat, meal_type, type);
 }
 
 nlohmann::json FoodItem::toJson() const

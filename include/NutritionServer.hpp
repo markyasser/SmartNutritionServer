@@ -7,10 +7,13 @@
 #include "Statistics.hpp"
 #include <vector>
 #include "User.hpp"
-#include "FoodItem.hpp"
 #include "DietPlan.hpp"
 #include "Logger.hpp"
 #include "Feedback.hpp"
+#include "FoodItem.hpp"
+#include "QuantitableFoodItem.hpp"
+#include "WeightableFoodItem.hpp"
+#include "DrinkableFoodItem.hpp"
 
 // For convenience
 using json = nlohmann::json;
@@ -33,7 +36,7 @@ public:
 private:
     NutritionServer();
     std::vector<User> users_;
-    std::vector<FoodItem> foodItems_;
+    std::vector<FoodItem *> foodItems_;
     Logger logger_;
     std::string usersFilePath_;
 

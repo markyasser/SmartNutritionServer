@@ -5,7 +5,9 @@
         "protein" : 5,
         "fat" : 2,
         "meal" : "breakfast",
-        "type" : "carbs"
+        "type" : "carbs",
+        "quantity_type":"quantitable",
+        "quantity" : 1
     },
     "milk" : {
         
@@ -14,7 +16,9 @@
         "protein" : 5,
         "fat" : 2,
         "meal" : "breakfast",
-        "type" : "protein"
+        "type" : "protein",
+        "quantity_type":"drinkable",
+        "quantity" : 250
     },
     "egg" : {
         "calories" : 70,
@@ -22,7 +26,9 @@
         "protein" : 10,
         "fat" : 5,
         "meal" : "breakfast",
-        "type" : "protein"
+        "type" : "protein",
+        "quantity_type":"quantitable",
+        "quantity" : 1
     },
     "apple" : {
         "calories" : 50,
@@ -30,7 +36,9 @@
         "protein" : 1,
         "fat" : 0,
         "meal" : "breakfast",
-        "type" : "carbs"
+        "type" : "carbs",
+        "quantity_type":"quantitable",
+        "quantity" : 1
     },
     "banana" : {
         "calories" : 100,
@@ -38,7 +46,9 @@
         "protein" : 1,
         "fat" : 0,
         "meal" : "breakfast",
-        "type" : "carbs"
+        "type" : "carbs",
+        "quantity_type":"quantitable",
+        "quantity" : 1
     },
     "orange" : {
         "calories" : 50,
@@ -46,7 +56,9 @@
         "protein" : 1,
         "fat" : 0,
         "meal" : "breakfast",
-        "type" : "carbs"
+        "type" : "carbs",
+        "quantity_type":"quantitable",
+        "quantity" : 1
     },
     "chicken" : {
         "calories" : 200,
@@ -54,7 +66,9 @@
         "protein" : 40,
         "fat" : 10,
         "meal" : "lunch",
-        "type" : "protein"
+        "type" : "protein",
+        "quantity_type":"weightable",
+        "quantity" : 250
     },
     "rice" : {
         "calories" : 200,
@@ -62,7 +76,9 @@
         "protein" : 5,
         "fat" : 1,
         "meal" : "lunch",
-        "type" : "carbs"
+        "type" : "carbs",
+        "quantity_type":"weightable",
+        "quantity" : 250
     },
     "salad" : {
         "calories" : 50,
@@ -70,7 +86,9 @@
         "protein" : 1,
         "fat" : 0,
         "meal" : "lunch",
-        "type" : "carbs"
+        "type" : "carbs",
+        "quantity_type":"weightable",
+        "quantity" : 250
     },
     "fish" : {
         "calories" : 200,
@@ -78,7 +96,9 @@
         "protein" : 40,
         "fat" : 10,
         "meal" : "lunch",
-        "type" : "protein"
+        "type" : "protein",
+        "quantity_type":"weightable",
+        "quantity" : 250
     },
     "pasta" : {
         "calories" : 200,
@@ -86,7 +106,9 @@
         "protein" : 5,
         "fat" : 1,
         "meal" : "lunch",
-        "type" : "carbs"
+        "type" : "carbs",
+        "quantity_type":"weightable",
+        "quantity" : 250
     },
     "pizza" : {
         "calories" : 200,
@@ -94,7 +116,9 @@
         "protein" : 5,
         "fat" : 1,
         "meal" : "dinner",
-        "type" : "carbs"
+        "type" : "carbs",
+        "quantity_type":"quantitable",
+        "quantity" : 1
     },
     "spinach" : {
         "calories" : 50,
@@ -102,7 +126,9 @@
         "protein" : 1,
         "fat" : 0,
         "meal" : "lunch",
-        "type" : "veggies"
+        "type" : "veggies",
+        "quantity_type":"quantitable",
+        "quantity" : 1
     },
     "broccoli" : {
         "calories" : 50,
@@ -110,7 +136,9 @@
         "protein" : 1,
         "fat" : 0,
         "meal" : "dinner",
-        "type" : "veggies"
+        "type" : "veggies",
+        "quantity_type":"quantitable",
+        "quantity" : 1
     },
     "carrot" : {
         "calories" : 50,
@@ -118,7 +146,9 @@
         "protein" : 1,
         "fat" : 0,
         "meal" : "breakfast",
-        "type" : "veggies"
+        "type" : "veggies",
+        "quantity_type":"quantitable",
+        "quantity" : 1
     },
     "potato" : {
         "calories" : 50,
@@ -126,7 +156,9 @@
         "protein" : 1,
         "fat" : 0,
         "meal" : "dinner",
-        "type" : "veggies"
+        "type" : "veggies",
+        "quantity_type":"weightable",
+        "quantity" : 250
     },
     "chocolate" :{
         "calories" : 100,
@@ -134,7 +166,9 @@
         "protein" : 5,
         "fat" : 2,
         "meal" : "dinner",
-        "type" : "sweets"
+        "type" : "sweets",
+        "quantity_type":"quantitable",
+        "quantity" : 1
     },
     "ice_cream" : {
         "calories" : 100,
@@ -142,6 +176,8 @@
         "protein" : 5,
         "fat" : 2,
         "meal" : "dinner",
-        "type" : "sweets"
+        "type" : "sweets",
+        "quantity_type":"quantitable",
+        "quantity" : 1
     }
 }

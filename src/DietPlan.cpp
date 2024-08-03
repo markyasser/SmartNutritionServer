@@ -9,7 +9,7 @@ DietPlan::DietPlan() : weeklyPlan(7)
     feedback = 0;
 }
 
-void DietPlan::createPlan(const User &user, const std::vector<FoodItem> &foodItems)
+void DietPlan::createPlan(const User &user, const std::vector<FoodItem *> &foodItems)
 {
     // Get user's needed carbs, protein, sweets, veggies from his weight, height, age, IsDiabetic, blood pressure
     double weight = user.getWeight();
@@ -36,30 +36,30 @@ void DietPlan::createPlan(const User &user, const std::vector<FoodItem> &foodIte
 
     // Create a one-week diet plan for the user
     // Separate food items by meal type
-    std::vector<FoodItem> breakfastItems;
-    std::vector<FoodItem> lunchItems;
-    std::vector<FoodItem> dinnerItems;
+    std::vector<FoodItem *> breakfastItems;
+    std::vector<FoodItem *> lunchItems;
+    std::vector<FoodItem *> dinnerItems;
 
-    std::vector<FoodItem> filteredItems;
+    std::vector<FoodItem *> filteredItems;
     std::set<std::string> excludedFoods = user.getExcludedFoods();
     for (const auto &item : foodItems)
     {
-        if (excludedFoods.find(item.getName()) == excludedFoods.end())
+        if (excludedFoods.find(item->getName()) == excludedFoods.end())
         {
             filteredItems.push_back(item);
         }
     }
     for (const auto &item : filteredItems)
     {
-        if (item.getMeal() == "breakfast")
+        if (item->getMeal() == "breakfast")
         {
             breakfastItems.push_back(item);
         }
-        else if (item.getMeal() == "lunch")
+        else if (item->getMeal() == "lunch")
         {
             lunchItems.push_back(item);
         }
-        else if (item.getMeal() == "dinner")
+        else if (item->getMeal() == "dinner")
         {
             dinnerItems.push_back(item);
         }
@@ -84,27 +84,27 @@ void DietPlan::createPlan(const User &user, const std::vector<FoodItem> &foodIte
         assignMeals(dayMeals.dinner, dinnerItems, neededCarbs * dinnerRatio, neededProtein * dinnerRatio);
     }
 }
-void DietPlan::assignMeals(std::vector<FoodItem> &meal, const std::vector<FoodItem> &availableItems, double neededCarbs, double neededProtein)
+void DietPlan::assignMeals(std::vector<FoodItem *> &meal, const std::vector<FoodItem *> &availableItems, double neededCarbs, double neededProtein)
 {
     double totalCarbs = 0;
     double totalProtein = 0;
 
     // Use a random number generator for variety
     std::mt19937 rng(std::random_device{}());
-    std::vector<FoodItem> candidates = availableItems;
+    std::vector<FoodItem *> candidates = availableItems;
 
     while (totalCarbs < neededCarbs && totalProtein < neededProtein && !candidates.empty())
     {
         std::uniform_int_distribution<std::size_t> dist(0, candidates.size() - 1);
         std::size_t index = dist(rng);
-        FoodItem selected = candidates[index];
+        FoodItem *selected = candidates[index];
 
         // Check if adding this item exceeds the nutritional needs
-        if (totalCarbs + selected.getCarbs() <= neededCarbs && totalProtein + selected.getProtein() <= neededProtein)
+        if (totalCarbs + selected->getCarbs() <= neededCarbs && totalProtein + selected->getProtein() <= neededProtein)
         {
             meal.push_back(selected);
-            totalCarbs += selected.getCarbs();
-            totalProtein += selected.getProtein();
+            totalCarbs += selected->getCarbs();
+            totalProtein += selected->getProtein();
         }
 
         // Remove the selected item from the pool of candidates
@@ -199,17 +199,17 @@ void DietPlan::display() const
         std::cout << "  Breakfast:\n";
         for (const auto &item : weeklyPlan[i].breakfast)
         {
-            std::cout << "    " << item.getName() << "\n";
+            std::cout << "    " << item->getName() << "\n";
         }
         std::cout << "  Lunch:\n";
         for (const auto &item : weeklyPlan[i].lunch)
         {
-            std::cout << "    " << item.getName() << "\n";
+            std::cout << "    " << item->getName() << "\n";
         }
         std::cout << "  Dinner:\n";
         for (const auto &item : weeklyPlan[i].dinner)
         {
-            std::cout << "    " << item.getName() << "\n";
+            std::cout << "    " << item->getName() << "\n";
         }
     }
 }
@@ -228,21 +228,21 @@ nlohmann::json DietPlan::toJson()
         dayJson["breakfast"] = nlohmann::json::array();
         for (const auto &item : dayMeals.breakfast)
         {
-            dayJson["breakfast"].push_back(item.toJson());
+            dayJson["breakfast"].push_back(item->toJson());
         }
 
         // Convert lunch items to JSON
         dayJson["lunch"] = nlohmann::json::array();
         for (const auto &item : dayMeals.lunch)
         {
-            dayJson["lunch"].push_back(item.toJson());
+            dayJson["lunch"].push_back(item->toJson());
         }
 
         // Convert dinner items to JSON
         dayJson["dinner"] = nlohmann::json::array();
         for (const auto &item : dayMeals.dinner)
         {
-            dayJson["dinner"].push_back(item.toJson());
+            dayJson["dinner"].push_back(item->toJson());
         }
 
         // Add the day's plan to the weekly plan

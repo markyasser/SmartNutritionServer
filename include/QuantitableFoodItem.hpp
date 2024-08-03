@@ -8,6 +8,9 @@ public:
 
     int getQuantity() const;
 
+    static QuantitableFoodItem *fromJson(const std::string &name, const nlohmann::json &j);
+    nlohmann::json toJson() const;
+
 private:
     int quantity_;
 };

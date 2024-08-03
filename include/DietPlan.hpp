@@ -9,16 +9,16 @@
 struct DayMeals
 {
     int day;
-    std::vector<FoodItem> breakfast;
-    std::vector<FoodItem> lunch;
-    std::vector<FoodItem> dinner;
+    std::vector<FoodItem *> breakfast;
+    std::vector<FoodItem *> lunch;
+    std::vector<FoodItem *> dinner;
 };
 
 class DietPlan
 {
 public:
     DietPlan();
-    void createPlan(const User &user, const std::vector<FoodItem> &foodItems);
+    void createPlan(const User &user, const std::vector<FoodItem *> &foodItems);
     void display() const;
 
     nlohmann::json toJson();
@@ -39,5 +39,5 @@ private:
     double calculateDailyCalories(const User &user);
 
     std::vector<FoodItem> getRandomItems(const std::vector<FoodItem> &items, const std::vector<FoodItem> &execludedItems, size_t count);
-    void assignMeals(std::vector<FoodItem> &meal, const std::vector<FoodItem> &availableItems, double neededCarbs, double neededProtein);
+    void assignMeals(std::vector<FoodItem *> &meal, const std::vector<FoodItem *> &availableItems, double neededCarbs, double neededProtein);
 };

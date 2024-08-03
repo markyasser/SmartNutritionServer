@@ -9,3 +9,19 @@ int DrickableFoodItem::getQuantityInMilliliters() const
 {
     return quantityInMilliliters_;
 }
+
+DrickableFoodItem *DrickableFoodItem::fromJson(const std::string &name, const nlohmann::json &j)
+{
+    FoodItem base = FoodItem::fromJson(name, j); // Extract common attributes
+    int quantityInMilliliters = j.at("quantity").get<int>();
+
+    return new DrickableFoodItem(base.getName(), base.getCalories(), base.getCarbs(), base.getProtein(), base.getFat(), base.getMeal(), base.getType(), quantityInMilliliters);
+}
+
+nlohmann::json DrickableFoodItem::toJson() const
+{
+    nlohmann::json baseJson = FoodItem::toJson(); // Get common attributes
+    baseJson["quantity"] = quantityInMilliliters_;
+
+    return baseJson;
+}

@@ -55,7 +55,7 @@ nlohmann::json NutritionServer::getFoodItems()
     foodItemsJson["fooditems"] = nlohmann::json::array();
     for (const auto &item : foodItems_)
     {
-        foodItemsJson["fooditems"].push_back(item.toJson()["name"]);
+        foodItemsJson["fooditems"].push_back(item->toJson()["name"]);
     }
     return foodItemsJson;
 }
@@ -94,9 +94,28 @@ void NutritionServer::populateFoodItems()
     for (auto &item : jsonData.items())
     {
         auto foodJson = item.value();
+        std::string name = item.key();
+        FoodItem *foodItem;
         try
         {
-            foodItems_.push_back(FoodItem::fromJson(item.key(), foodJson));
+            std::string quantityType = foodJson.at("quantity_type").get<std::string>();
+            if (quantityType == "quantitable")
+            {
+                foodItem = QuantitableFoodItem::fromJson(name, foodJson);
+            }
+            else if (quantityType == "drinkable")
+            {
+                foodItem = DrickableFoodItem::fromJson(name, foodJson);
+            }
+            else if (quantityType == "weightable")
+            {
+                foodItem = WeightableFoodItem::fromJson(name, foodJson);
+            }
+            else
+            {
+                throw std::runtime_error("Invalid quantity type: " + quantityType);
+            }
+            foodItems_.push_back(foodItem);
         }
         catch (const std::exception &e)
         {

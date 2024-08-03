@@ -61,3 +61,6 @@ Generated diet plan for user: karen
 Received feedback: 5
 Received feedback: 5
 Received feedback: 5
+Received info for user: Maha
+User info saved successfully.
+Generated diet plan for user: Maha

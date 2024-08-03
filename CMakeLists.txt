@@ -10,16 +10,19 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 # Define source and header files
 set(SRC_DIR ${CMAKE_SOURCE_DIR}/src)
 set(INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include)
-set(INCLUDE_ROUTES ${CMAKE_SOURCE_DIR}/routes)
+set(ROUTES_DIR ${CMAKE_SOURCE_DIR}/routes)
 
 
 # Include directories
 include_directories(${INCLUDE_DIR})
-include_directories(${INCLUDE_ROUTES})
+include_directories(${ROUTES_DIR})
+
+set(MIDDLEWARES_DIR ${INCLUDE_DIR}/middlewares)
+include_directories(${MIDDLEWARES_DIR})
 
 # Include main.cpp in the sources list
-file(GLOB SOURCES ${SRC_DIR}/*.cpp ${INCLUDE_ROUTES}/*.cpp  ${CMAKE_SOURCE_DIR}/main.cpp)
-file(GLOB HEADERS ${INCLUDE_DIR}/*.hpp ${INCLUDE_ROUTES}/*.hpp ) 
+file(GLOB SOURCES ${SRC_DIR}/*.cpp ${ROUTES_DIR}/*.cpp  ${CMAKE_SOURCE_DIR}/main.cpp)
+file(GLOB HEADERS ${INCLUDE_DIR}/*.hpp ${ROUTES_DIR}/*.hpp ) 
 
 # Create executable
 add_executable(SmartNutritionServer ${SOURCES} ${HEADERS})

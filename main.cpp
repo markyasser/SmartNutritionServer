@@ -1,5 +1,5 @@
 #include <crow.h>
-#include "NutritionRoutes.hpp"
+#include "Routes.hpp"
 
 int main()
 {
@@ -10,8 +10,8 @@ int main()
     // Create an instance of NutritionServer
     NutritionServer &server = NutritionServer::getInstance();
 
-    // Set up routes using the NutritionRoutes class
-    NutritionRoutes::setupRoutes(app, server);
+    // Set up routes using the Routes class
+    Routes::setupRoutes(app, server);
 
     // Start the server on port 8080 with multithreading enabled
     app.port(port).multithreaded().run();

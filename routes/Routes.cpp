@@ -1,4 +1,4 @@
-#include "NutritionRoutes.hpp"
+#include "Routes.hpp"
 
 // Helper function to create a JSON response for errors
 crow::response createErrorResponse(int code, const std::string &message)
@@ -9,7 +9,7 @@ crow::response createErrorResponse(int code, const std::string &message)
     return crow::response{code, responseJson.dump()};
 }
 
-void NutritionRoutes::setupRoutes(crow::App<Cors> &app, NutritionServer &server)
+void Routes::setupRoutes(crow::App<Cors> &app, NutritionServer &server)
 {
     // Endpoint to analyze data and save statistics
     CROW_ROUTE(app, "/dashboard").methods("GET"_method)([&server]

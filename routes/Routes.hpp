@@ -5,7 +5,7 @@
 #include <json.hpp>
 #include "Cors.hpp"
 
-class NutritionRoutes
+class Routes
 {
 public:
     static void setupRoutes(crow::App<Cors> &app, NutritionServer &server);

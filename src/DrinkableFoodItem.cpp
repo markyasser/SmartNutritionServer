@@ -1,24 +1,32 @@
 #include "DrinkableFoodItem.hpp"
 
-DrickableFoodItem::DrickableFoodItem(const std::string &name, int calories, int carbs, int protein, int fat, const std::string &meal, const std::string &type, int quantityInMilliliters)
+DrinkableFoodItem::DrinkableFoodItem() : FoodItem()
+{
+}
+
+DrinkableFoodItem::DrinkableFoodItem(const std::string &name, int calories, int carbs, int protein, int fat, const std::string &meal, const std::string &type, int quantityInMilliliters)
     : FoodItem(name, calories, carbs, protein, fat, meal, type), quantityInMilliliters_(quantityInMilliliters)
 {
 }
 
-int DrickableFoodItem::getQuantityInMilliliters() const
+int DrinkableFoodItem::getQuantity() const
 {
     return quantityInMilliliters_;
 }
 
-DrickableFoodItem *DrickableFoodItem::fromJson(const std::string &name, const nlohmann::json &j)
+void DrinkableFoodItem::fromJson(const std::string &name, const nlohmann::json &j)
 {
-    FoodItem base = FoodItem::fromJson(name, j); // Extract common attributes
-    int quantityInMilliliters = j.at("quantity").get<int>();
-
-    return new DrickableFoodItem(base.getName(), base.getCalories(), base.getCarbs(), base.getProtein(), base.getFat(), base.getMeal(), base.getType(), quantityInMilliliters);
+    name_ = name;
+    meal_ = j.at("meal").get<std::string>();
+    calories_ = j.at("calories").get<int>();
+    carbs_ = j.at("carbs").get<int>();
+    protein_ = j.at("protein").get<int>();
+    fat_ = j.at("fat").get<int>();
+    type_ = j.at("type").get<std::string>();
+    quantityInMilliliters_ = j.at("quantity").get<int>();
 }
 
-nlohmann::json DrickableFoodItem::toJson() const
+nlohmann::json DrinkableFoodItem::toJson() const
 {
     nlohmann::json baseJson = FoodItem::toJson(); // Get common attributes
     baseJson["quantity"] = quantityInMilliliters_;

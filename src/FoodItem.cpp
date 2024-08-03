@@ -1,5 +1,7 @@
 #include "FoodItem.hpp"
 
+FoodItem::FoodItem() : name_(""), calories_(0), carbs_(0), protein_(0), fat_(0), meal_(""), type_("") {}
+
 FoodItem::FoodItem(const std::string &name, int calories, int carbs, int protein, int fat, const std::string &meal, const std::string &type)
     : name_(name), calories_(calories), carbs_(carbs), protein_(protein), fat_(fat), meal_(meal), type_(type) {}
 
@@ -16,19 +18,6 @@ bool FoodItem::operator<(const FoodItem &other) const
         return name_ < other.name_;
     }
     return calories_ < other.calories_;
-}
-
-// Static method to create a FoodItem object from JSON data
-FoodItem FoodItem::fromJson(const std::string &name, const nlohmann::json &j)
-{
-    std::string meal_type = j.at("meal").get<std::string>();
-    int calories = j.at("calories").get<int>();
-    int carbs = j.at("carbs").get<int>();
-    int protein = j.at("protein").get<int>();
-    int fat = j.at("fat").get<int>();
-    std::string type = j.at("type").get<std::string>();
-
-    return FoodItem(name, calories, carbs, protein, fat, meal_type, type);
 }
 
 nlohmann::json FoodItem::toJson() const

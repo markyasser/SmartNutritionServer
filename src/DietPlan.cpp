@@ -112,27 +112,6 @@ void DietPlan::assignMeals(std::vector<FoodItem *> &meal, const std::vector<Food
     }
 }
 
-std::vector<FoodItem> DietPlan::getRandomItems(const std::vector<FoodItem> &items, const std::vector<FoodItem> &excludedItems, size_t count)
-{
-    // Create a filtered list of items excluding the excludedItems
-    std::vector<FoodItem> filteredItems;
-    std::set_difference(items.begin(), items.end(),
-                        excludedItems.begin(), excludedItems.end(),
-                        std::back_inserter(filteredItems));
-
-    // Ensure the count does not exceed the number of available items
-    if (count > filteredItems.size())
-    {
-        count = filteredItems.size();
-    }
-
-    // Randomly sample from the filtered list
-    std::vector<FoodItem> result;
-    std::sample(filteredItems.begin(), filteredItems.end(), std::back_inserter(result), count, std::mt19937{std::random_device{}()});
-
-    return result;
-}
-
 double DietPlan::calculateNeededCarbs(const User &user)
 {
     double dailyCalories = calculateDailyCalories(user);

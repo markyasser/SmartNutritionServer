@@ -9,6 +9,7 @@
 class FoodItem
 {
 public:
+    FoodItem();
     FoodItem(const std::string &name, int calories, int carbs, int protein, int fat, const std::string &meal, const std::string &type);
     // Getter methods
     std::string getName() const;
@@ -18,13 +19,15 @@ public:
     int getFat() const;
     std::string getMeal() const;
     std::string getType() const;
-    static FoodItem fromJson(const std::string &name, const nlohmann::json &j);
     nlohmann::json toJson() const;
+
+    virtual void fromJson(const std::string &name, const nlohmann::json &j) = 0;
+    virtual int getQuantity() const = 0;
 
     bool operator==(const FoodItem &other) const;
     bool operator<(const FoodItem &other) const;
 
-private:
+protected:
     std::string name_;
     int calories_;
     int carbs_;

@@ -101,15 +101,18 @@ void NutritionServer::populateFoodItems()
             std::string quantityType = foodJson.at("quantity_type").get<std::string>();
             if (quantityType == "quantitable")
             {
-                foodItem = QuantitableFoodItem::fromJson(name, foodJson);
+                foodItem = new QuantitableFoodItem();
+                foodItem->fromJson(name, foodJson);
             }
             else if (quantityType == "drinkable")
             {
-                foodItem = DrickableFoodItem::fromJson(name, foodJson);
+                foodItem = new DrinkableFoodItem();
+                foodItem->fromJson(name, foodJson);
             }
             else if (quantityType == "weightable")
             {
-                foodItem = WeightableFoodItem::fromJson(name, foodJson);
+                foodItem = new WeightableFoodItem();
+                foodItem->fromJson(name, foodJson);
             }
             else
             {

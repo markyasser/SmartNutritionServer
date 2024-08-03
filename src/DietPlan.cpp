@@ -14,6 +14,8 @@ void DietPlan::createPlan(const User &user, const std::vector<FoodItem *> &foodI
     // Calculate needed calories
     bmr = calculateBMR(user);
     dailyCalories = bmr * user.getSedentaryActivityLevel();
+    bmi = (user.getWeight() / user.getHeight() / user.getHeight()) * 10000;
+    // Calculate ideal body weight
 
     // Calculate needed carbs
     double neededCarbs = calculateNeededCarbs(user.IsDiabetic());
@@ -164,6 +166,9 @@ nlohmann::json DietPlan::toJson()
 {
     nlohmann::json j;
     j["id"] = id;
+    j["bmr"] = bmr;
+    j["dailyCalories"] = dailyCalories;
+    j["bmi"] = bmi;
     // Create a JSON array for the weekly plan
     j["weeklyPlan"] = nlohmann::json::array();
     for (const auto &dayMeals : weeklyPlan)

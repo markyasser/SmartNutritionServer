@@ -103,5 +103,27 @@
         "name": "Marko",
         "sedentary_activity_level": 1.5499999523162842,
         "weight": 78.0
+    },
+    {
+        "age": 24,
+        "excludedFoods": [],
+        "gender": "male",
+        "height": 180.1,
+        "is_diabetic": false,
+        "is_high_blood_pressure": false,
+        "name": "Mark",
+        "sedentary_activity_level": 1.375,
+        "weight": 72.0
+    },
+    {
+        "age": 24,
+        "excludedFoods": [],
+        "gender": "male",
+        "height": 180.1,
+        "is_diabetic": false,
+        "is_high_blood_pressure": false,
+        "name": "Marko",
+        "sedentary_activity_level": 1.375,
+        "weight": 71.0
     }
 ]

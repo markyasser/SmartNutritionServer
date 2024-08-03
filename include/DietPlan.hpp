@@ -29,7 +29,8 @@ public:
 private:
     int id;
     int feedback; // 0 to 5 rating to the plan given by the user
-    double bmr;
+    double bmr;   // Basal Metabolic Rate
+    double bmi;   // Body Mass Index
     double dailyCalories;
     std::vector<DayMeals> weeklyPlan;
 

@@ -110,8 +110,8 @@
         "quantity_type":"weightable",
         "quantity" : 250
     },
-    "pizza" : {
-        "calories" : 200,
+    "pizza slice" : {
+        "calories" : 100,
         "carbs" : 40,
         "protein" : 5,
         "fat" : 1,
@@ -127,8 +127,8 @@
         "fat" : 0,
         "meal" : "lunch",
         "type" : "veggies",
-        "quantity_type":"quantitable",
-        "quantity" : 1
+        "quantity_type":"weightable",
+        "quantity" : 200
     },
     "broccoli" : {
         "calories" : 50,

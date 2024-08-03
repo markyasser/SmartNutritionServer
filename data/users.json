@@ -332,5 +332,150 @@
         "is_diabetic": false,
         "name": "Maha",
         "weight": 71.0
+    },
+    {
+        "age": 31,
+        "blood_pressure_lower": 80,
+        "blood_pressure_upper": 120,
+        "excludedFoods": [
+            "banana",
+            "egg"
+        ],
+        "gender": "female",
+        "height": 164.0,
+        "is_diabetic": false,
+        "name": "Maha",
+        "weight": 71.0
+    },
+    {
+        "age": 22,
+        "blood_pressure_lower": 78,
+        "blood_pressure_upper": 123,
+        "excludedFoods": [
+            "apple",
+            "banana",
+            "bread"
+        ],
+        "gender": "male",
+        "height": 188.0,
+        "is_diabetic": false,
+        "name": "Markooo",
+        "weight": 78.0
+    },
+    {
+        "age": 33,
+        "blood_pressure_lower": 87,
+        "blood_pressure_upper": 123,
+        "excludedFoods": [
+            "chocolate",
+            "egg"
+        ],
+        "gender": "Female",
+        "height": 160.0,
+        "is_diabetic": true,
+        "name": "mariam",
+        "weight": 78.0
+    },
+    {
+        "age": 32,
+        "blood_pressure_lower": 89,
+        "blood_pressure_upper": 123,
+        "excludedFoods": [
+            "broccoli",
+            "fish"
+        ],
+        "gender": "male",
+        "height": 156.0,
+        "is_diabetic": true,
+        "name": "adsa",
+        "weight": 87.0
+    },
+    {
+        "age": 123,
+        "blood_pressure_lower": 78,
+        "blood_pressure_upper": 123,
+        "excludedFoods": [
+            "broccoli",
+            "carrot"
+        ],
+        "gender": "Female",
+        "height": 156.0,
+        "is_diabetic": false,
+        "name": "ads",
+        "weight": 67.0
+    },
+    {
+        "age": 132,
+        "blood_pressure_lower": 67,
+        "blood_pressure_upper": 213,
+        "excludedFoods": [],
+        "gender": "Female",
+        "height": 159.0,
+        "is_diabetic": true,
+        "name": "faarah",
+        "weight": 45.0
+    },
+    {
+        "age": 23,
+        "blood_pressure_lower": 23,
+        "blood_pressure_upper": 45,
+        "excludedFoods": [],
+        "gender": "male",
+        "height": 123.0,
+        "is_diabetic": false,
+        "name": "mahmoudd",
+        "weight": 34.0
+    },
+    {
+        "age": 132,
+        "blood_pressure_lower": 123,
+        "blood_pressure_upper": 123,
+        "excludedFoods": [
+            "ice_cream",
+            "milk"
+        ],
+        "gender": "male",
+        "height": 123.0,
+        "is_diabetic": false,
+        "name": "asd",
+        "weight": 43.0
+    },
+    {
+        "age": 31,
+        "blood_pressure_lower": 80,
+        "blood_pressure_upper": 120,
+        "excludedFoods": [
+            "banana",
+            "egg"
+        ],
+        "gender": "female",
+        "height": 164.0,
+        "is_diabetic": false,
+        "name": "Maha",
+        "weight": 71.0
+    },
+    {
+        "age": 23,
+        "blood_pressure_lower": 78,
+        "blood_pressure_upper": 123,
+        "excludedFoods": [],
+        "gender": "male",
+        "height": 214.0,
+        "is_diabetic": false,
+        "name": "asdf",
+        "weight": 56.0
+    },
+    {
+        "age": 123,
+        "blood_pressure_lower": 123,
+        "blood_pressure_upper": 123,
+        "excludedFoods": [
+            "milk"
+        ],
+        "gender": "male",
+        "height": 123.0,
+        "is_diabetic": false,
+        "name": "ads",
+        "weight": 123.0
     }
 ]

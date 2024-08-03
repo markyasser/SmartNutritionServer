@@ -73,3 +73,36 @@ Generated diet plan for user: Maha
 Received info for user: Maha
 User info saved successfully.
 Generated diet plan for user: Maha
+Received info for user: Maha
+User info saved successfully.
+Generated diet plan for user: Maha
+Received info for user: Markooo
+User info saved successfully.
+Generated diet plan for user: Markooo
+Received info for user: mariam
+User info saved successfully.
+Generated diet plan for user: mariam
+Received info for user: adsa
+User info saved successfully.
+Generated diet plan for user: adsa
+Received info for user: ads
+User info saved successfully.
+Generated diet plan for user: ads
+Received info for user: faarah
+User info saved successfully.
+Generated diet plan for user: faarah
+Received info for user: mahmoudd
+User info saved successfully.
+Generated diet plan for user: mahmoudd
+Received info for user: asd
+User info saved successfully.
+Generated diet plan for user: asd
+Received info for user: Maha
+User info saved successfully.
+Generated diet plan for user: Maha
+Received info for user: asdf
+User info saved successfully.
+Generated diet plan for user: asdf
+Received info for user: ads
+User info saved successfully.
+Generated diet plan for user: ads

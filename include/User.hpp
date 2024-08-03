@@ -9,16 +9,16 @@ class User
 public:
     User();
     User(const std::string &name, int age, double weight, double height, const std::string &gender,
-         int bloodPressureUpper, int bloodPressureLower, bool isDiabetic, std::set<std::string> excludedFoods);
+         bool isHighBloodPressure, bool isDiabetic, float sedentaryActivityLevel, std::set<std::string> excludedFoods);
     std::string getName() const;
     double getWeight() const;
     double getHeight() const;
     int getAge() const;
     std::string getGender() const;
-    int getBloodPressureUpper() const;
-    int getBloodPressureLower() const;
+    int IsHighBloodPressure() const;
     std::set<std::string> getExcludedFoods() const;
-    bool getIsDiabetic() const;
+    bool IsDiabetic() const;
+    float getSedentaryActivityLevel() const;
     void toJson(nlohmann::json &j) const;
     static User fromJson(const nlohmann::json &j);
 
@@ -32,10 +32,9 @@ private:
     // Health data
     double weight_;
     double height_;
-    int bloodPressureUpper_;
-    int bloodPressureLower_;
-    bool isDiabetic_;
+    float sedentaryActivityLevel_;
 
-    // Diet plan
-    int dietPlanId;
+    // Pre-existing conditions
+    bool isDiabetic_;
+    bool isHighBloodPressure_;
 };

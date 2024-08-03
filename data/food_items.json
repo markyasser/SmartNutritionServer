@@ -10,7 +10,6 @@
         "quantity" : 1
     },
     "milk" : {
-        
         "calories" : 50,
         "carbs" : 10,
         "protein" : 5,
@@ -18,7 +17,7 @@
         "meal" : "breakfast",
         "type" : "protein",
         "quantity_type":"drinkable",
-        "quantity" : 250
+        "quantity" : 200
     },
     "egg" : {
         "calories" : 70,

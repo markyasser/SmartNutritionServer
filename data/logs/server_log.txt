@@ -106,3 +106,31 @@ Generated diet plan for user: asdf
 Received info for user: ads
 User info saved successfully.
 Generated diet plan for user: ads
+Received info for user: Mark
+User info saved successfully.
+Generated diet plan for user: Mark
+Received info for user: sad
+User info saved successfully.
+Generated diet plan for user: sad
+Received info for user: Marko
+User info saved successfully.
+Generated diet plan for user: Marko
+Received info for user: asd
+User info saved successfully.
+Generated diet plan for user: asd
+Received info for user: asd
+User info saved successfully.
+Generated diet plan for user: asd
+Received info for user: sad
+User info saved successfully.
+Generated diet plan for user: sad
+Received info for user: 124
+User info saved successfully.
+Generated diet plan for user: 124
+Received info for user: ads
+User info saved successfully.
+Generated diet plan for user: ads
+Received info for user: Marko
+User info saved successfully.
+Generated diet plan for user: Marko
+Received feedback: 5

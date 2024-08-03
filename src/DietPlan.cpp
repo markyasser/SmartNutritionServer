@@ -11,29 +11,21 @@ DietPlan::DietPlan() : weeklyPlan(7)
 
 void DietPlan::createPlan(const User &user, const std::vector<FoodItem *> &foodItems)
 {
-    user_ = user;
-    // Get user's needed carbs, protein, sweets, veggies from his weight, height, age, IsDiabetic, blood pressure
-    double weight = user.getWeight();
-    double height = user.getHeight();
-    int age = user.getAge();
-    bool isDiabetic = user.getIsDiabetic();
-    int bloodPressureUpper = user.getBloodPressureUpper();
-    int bloodPressureLower = user.getBloodPressureLower();
-
     // Calculate needed calories
-    double dailyCalories = calculateDailyCalories(user);
+    bmr = calculateBMR(user);
+    dailyCalories = bmr * user.getSedentaryActivityLevel();
 
     // Calculate needed carbs
-    double neededCarbs = calculateNeededCarbs(user);
+    double neededCarbs = calculateNeededCarbs(user.IsDiabetic());
 
     // Calculate needed protein
-    double neededProtein = calculateNeededProtein(user);
+    double neededProtein = calculateNeededProtein();
 
     // Calculate needed sweets
-    double neededSweets = calculateNeededSweets(user);
+    double neededSweets = calculateNeededSweets(user.IsDiabetic());
 
     // Calculate needed veggies
-    double neededVeggies = calculateNeededVeggies(user);
+    double neededVeggies = calculateNeededVeggies(user.IsHighBloodPressure());
 
     // Create a one-week diet plan for the user
     // Separate food items by meal type
@@ -76,16 +68,16 @@ void DietPlan::createPlan(const User &user, const std::vector<FoodItem *> &foodI
     {
         dayMeals.day = day++;
         // Assign breakfast items considering nutritional needs
-        assignMeals(dayMeals.breakfast, breakfastItems, neededCarbs * breakfastRatio, neededProtein * breakfastRatio);
+        assignMeals(dayMeals.breakfast, breakfastItems, neededCarbs * breakfastRatio, neededProtein * breakfastRatio, neededSweets * breakfastRatio, neededVeggies * breakfastRatio);
 
         // Assign lunch items considering nutritional needs
-        assignMeals(dayMeals.lunch, lunchItems, neededCarbs * lunchRatio, neededProtein * lunchRatio);
+        assignMeals(dayMeals.lunch, lunchItems, neededCarbs * lunchRatio, neededProtein * lunchRatio, neededSweets * breakfastRatio, neededVeggies * breakfastRatio);
 
         // Assign dinner items considering nutritional needs
-        assignMeals(dayMeals.dinner, dinnerItems, neededCarbs * dinnerRatio, neededProtein * dinnerRatio);
+        assignMeals(dayMeals.dinner, dinnerItems, neededCarbs * dinnerRatio, neededProtein * dinnerRatio, neededSweets * breakfastRatio, neededVeggies * breakfastRatio);
     }
 }
-void DietPlan::assignMeals(std::vector<FoodItem *> &meal, const std::vector<FoodItem *> &availableItems, double neededCarbs, double neededProtein)
+void DietPlan::assignMeals(std::vector<FoodItem *> &meal, const std::vector<FoodItem *> &availableItems, double neededCarbs, double neededProtein, double neededSweets, double neededVeggies)
 {
     double totalCarbs = 0;
     double totalProtein = 0;
@@ -113,50 +105,48 @@ void DietPlan::assignMeals(std::vector<FoodItem *> &meal, const std::vector<Food
     }
 }
 
-double DietPlan::calculateNeededCarbs(const User &user)
+double DietPlan::calculateNeededCarbs(bool isDiabetic)
 {
-    double dailyCalories = calculateDailyCalories(user);
     double neededCarbs = dailyCalories * 0.50 / 4; // 50% of calories from carbs, 4 cal/g
 
-    if (user.getIsDiabetic())
-    {
+    if (isDiabetic)
         neededCarbs *= 0.8; // Reduce carb intake for diabetics
-    }
 
     return neededCarbs;
 }
 
-double DietPlan::calculateNeededProtein(const User &user)
+double DietPlan::calculateNeededProtein()
 {
-    double dailyCalories = calculateDailyCalories(user);
-    double neededProtein = dailyCalories * 0.20 / 4; // 20% of calories from protein, 4 cal/g
+    double neededProtein = dailyCalories * 0.2 / 4; // 20% of calories from protein, 4 cal/g
     return neededProtein;
 }
 
-double DietPlan::calculateNeededSweets(const User &user)
+double DietPlan::calculateNeededSweets(bool isDiabetic)
 {
-    // Assuming a simplified model where sweets are a small percentage of daily calories
-    double dailyCalories = calculateDailyCalories(user);
     double neededSweets = dailyCalories * 0.05 / 4; // 5% of calories from sweets, 4 cal/g
+    if (isDiabetic)
+        return 0.7 * neededSweets; // Reduce sweets intake for diabetics
+
     return neededSweets;
 }
 
-double DietPlan::calculateNeededVeggies(const User &user)
+double DietPlan::calculateNeededVeggies(bool isHighBloodPressure)
 {
-    // Assuming a simplified model where veggies are a percentage of daily calories
-    double dailyCalories = calculateDailyCalories(user);
     double neededVeggies = dailyCalories * 0.10 / 4; // 10% of calories from veggies, 4 cal/g
+
+    if (isHighBloodPressure)
+        neededVeggies *= 1.2; // increase veggies for high blood pressure
     return neededVeggies;
 }
 
-double DietPlan::calculateDailyCalories(const User &user)
+double DietPlan::calculateBMR(const User &user)
 {
     // Basic formula for calculating daily caloric needs
     double weight = user.getWeight(); // in kg
     double height = user.getHeight(); // in cm
     int age = user.getAge();
 
-    double bmr;
+    double bmr; // Basal Metabolic Rate
     if (user.getGender() == "male")
     {
         bmr = 10 * weight + 6.25 * height - 5 * age + 5;
@@ -167,31 +157,7 @@ double DietPlan::calculateDailyCalories(const User &user)
     }
 
     // Assume a sedentary activity level as a default
-    return bmr * 1.2;
-}
-
-void DietPlan::display() const
-{
-    std::cout << "Weekly Diet Plan:\n";
-    for (size_t i = 0; i < weeklyPlan.size(); ++i)
-    {
-        std::cout << "Day " << weeklyPlan[i].day << ":\n";
-        std::cout << "  Breakfast:\n";
-        for (const auto &item : weeklyPlan[i].breakfast)
-        {
-            std::cout << "    " << item->getName() << "\n";
-        }
-        std::cout << "  Lunch:\n";
-        for (const auto &item : weeklyPlan[i].lunch)
-        {
-            std::cout << "    " << item->getName() << "\n";
-        }
-        std::cout << "  Dinner:\n";
-        for (const auto &item : weeklyPlan[i].dinner)
-        {
-            std::cout << "    " << item->getName() << "\n";
-        }
-    }
+    return bmr;
 }
 
 nlohmann::json DietPlan::toJson()

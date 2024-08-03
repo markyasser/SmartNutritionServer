@@ -6,21 +6,21 @@ User::User()
     age_ = 0;
     weight_ = 0;
     height_ = 0;
-    bloodPressureLower_ = 0;
-    bloodPressureUpper_ = 0;
     isDiabetic_ = false;
+    isHighBloodPressure_ = false;
+    sedentaryActivityLevel_ = 1.2;
 }
 
-User::User(const std::string &name, int age, double weight, double height, const std::string &gender, int bloodPressureUpper, int bloodPressureLower, bool isDiabetic, std::set<std::string> excludedFoods = {})
+User::User(const std::string &name, int age, double weight, double height, const std::string &gender, bool isHighBloodPressure, bool isDiabetic, float sedentaryActivityLevel = 1.2, std::set<std::string> excludedFoods = {})
 {
     name_ = name;
     age_ = age;
     weight_ = weight;
     height_ = height;
     gender_ = gender;
-    bloodPressureUpper_ = bloodPressureUpper;
-    bloodPressureLower_ = bloodPressureLower;
     isDiabetic_ = isDiabetic;
+    sedentaryActivityLevel_ = sedentaryActivityLevel;
+    isHighBloodPressure_ = isHighBloodPressure;
     excludedFoods_ = excludedFoods;
 }
 
@@ -49,21 +49,19 @@ std::string User::getGender() const
     return gender_;
 }
 
-int User::getBloodPressureUpper() const
+int User::IsHighBloodPressure() const
 {
-    return bloodPressureUpper_;
+    return isHighBloodPressure_;
 }
 
-int User::getBloodPressureLower() const
-{
-    return bloodPressureLower_;
-}
-
-bool User::getIsDiabetic() const
+bool User::IsDiabetic() const
 {
     return isDiabetic_;
 }
-
+float User::getSedentaryActivityLevel() const
+{
+    return sedentaryActivityLevel_;
+}
 std::set<std::string> User::getExcludedFoods() const
 {
     return excludedFoods_;
@@ -77,8 +75,8 @@ void User::toJson(nlohmann::json &j) const
         {"weight", weight_},
         {"height", height_},
         {"is_diabetic", isDiabetic_},
-        {"blood_pressure_upper", bloodPressureUpper_},
-        {"blood_pressure_lower", bloodPressureLower_},
+        {"is_high_blood_pressure", isHighBloodPressure_},
+        {"sedentary_activity_level", sedentaryActivityLevel_},
         {"excludedFoods", excludedFoods_}};
 }
 
@@ -89,8 +87,8 @@ User User::fromJson(const nlohmann::json &j)
                 j.at("weight").get<double>(),
                 j.at("height").get<double>(),
                 j.at("gender").get<std::string>(),
-                j.at("blood_pressure_upper").get<int>(),
-                j.at("blood_pressure_lower").get<int>(),
+                j.at("is_high_blood_pressure").get<int>(),
                 j.at("is_diabetic").get<bool>(),
+                j.at("sedentary_activity_level").get<float>(),
                 j.at("excludedFoods").get<std::set<std::string>>());
 }

@@ -33,9 +33,9 @@ void Statistics::calculateStatistics(const std::vector<User> &users)
         weightHistogram_[weightRange]++;
 
         // Update the diabetes statistics
-        if (user.getGender() == "male" && user.getIsDiabetic())
+        if (user.getGender() == "male" && user.IsDiabetic())
             totalDiabeticMales++;
-        else if (user.getGender() == "female" && user.getIsDiabetic())
+        else if (user.getGender() == "female" && user.IsDiabetic())
             totalDiabeticFemales++;
         else
             totalNonDiabetic++;

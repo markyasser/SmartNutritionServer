@@ -36,8 +36,8 @@ void Routes::setupRoutes(crow::App<Cors> &app, NutritionServer &server)
         } });
 
     // Endpoint to register a user and generate a diet plan
-    CROW_ROUTE(app, "/register-user").methods("POST"_method)([&server](const crow::request &req)
-                                                             {
+    CROW_ROUTE(app, "/create-diet-plan").methods("POST"_method)([&server](const crow::request &req)
+                                                                {
         try {
             nlohmann::json userData = nlohmann::json::parse(req.body);
             if (!userData.contains("name") || !userData.contains("age") || !userData.contains("weight")) {

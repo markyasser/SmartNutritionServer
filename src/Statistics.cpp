@@ -8,7 +8,6 @@ void Statistics::analyze(const std::vector<User> &users)
 {
     calculateStatistics(users);
 }
-
 void Statistics::calculateStatistics(const std::vector<User> &users)
 {
     if (users.empty())
@@ -17,37 +16,41 @@ void Statistics::calculateStatistics(const std::vector<User> &users)
         averageHeight_ = 0.0;
         return;
     }
-    int totalMen = 0;
-    int totalDiabeticMen = 0;
-    for (auto user : users)
+
+    for (const auto &user : users)
     {
         averageWeight_ += user.getWeight();
         averageHeight_ += user.getHeight();
 
-        // Update the height histogram
+        // Update the height histogram with ranges
         int height = user.getHeight();
-        if (heightHistogram_.find(height) == heightHistogram_.end())
-            heightHistogram_[height] = 1;
-        else
-            heightHistogram_[height]++;
+        std::string heightRange = determineRange(height, 10); // Change 10 to your preferred range size
+        heightHistogram_[heightRange]++;
 
-        // Update the weight histogram
+        // Update the weight histogram with ranges
         int weight = user.getWeight();
-        if (weightHistogram_.find(weight) == weightHistogram_.end())
-            weightHistogram_[weight] = 1;
-        else
-            weightHistogram_[weight]++;
+        std::string weightRange = determineRange(weight, 5); // Change 5 to your preferred range size
+        weightHistogram_[weightRange]++;
 
-        // Update the percentage of
+        // Update the diabetes statistics
         if (user.getGender() == "male" && user.getIsDiabetic())
             totalDiabeticMales++;
-
         else if (user.getGender() == "female" && user.getIsDiabetic())
             totalDiabeticFemales++;
-
         else
             totalNonDiabetic++;
     }
+
+    // Calculate averages
+    averageWeight_ /= users.size();
+    averageHeight_ /= users.size();
+}
+
+std::string Statistics::determineRange(int value, int rangeSize) const
+{
+    int lowerBound = (value / rangeSize) * rangeSize;
+    int upperBound = lowerBound + rangeSize - 1;
+    return std::to_string(lowerBound) + "-" + std::to_string(upperBound);
 }
 void Statistics::saveStatistics(const std::string &filePath) const
 {
